@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import static org.junit.Assert.*;
 
@@ -25,8 +25,8 @@ import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Chemical;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Chemical;
 
 public class TestAtomAlias {
 

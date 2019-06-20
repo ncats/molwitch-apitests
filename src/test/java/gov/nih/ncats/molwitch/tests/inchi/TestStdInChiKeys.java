@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests.inchi;
+package gov.nih.ncats.molwitch.tests.inchi;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,9 +33,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import gov.nih.ncats.witch.ChemicalBuilder;
-import gov.nih.ncats.witch.inchi.InChiResult;
-import gov.nih.ncats.witch.inchi.Inchi;
+import gov.nih.ncats.molwitch.ChemicalBuilder;
+import gov.nih.ncats.molwitch.inchi.InChiResult;
+import gov.nih.ncats.molwitch.inchi.Inchi;
 @RunWith(Parameterized.class)
 @Ignore("some tests still fail")
 public class TestStdInChiKeys {

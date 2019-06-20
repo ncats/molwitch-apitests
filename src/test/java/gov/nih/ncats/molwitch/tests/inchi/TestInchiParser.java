@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests.inchi;
+package gov.nih.ncats.molwitch.tests.inchi;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -24,9 +24,9 @@ import java.util.Iterator;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.inchi.Inchi;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.inchi.Inchi;
 
 import static org.junit.Assert.*;
 public class TestInchiParser {

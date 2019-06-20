@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Chemical;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Chemical;
 import static org.junit.Assert.*;
 
 //examples borrowed from CDK mailing list 

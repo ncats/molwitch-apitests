@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,8 +26,8 @@ import java.util.Scanner;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.ChemicalSource;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.ChemicalSource;
 
 public class TestUnknownChemicalStringInput {
 

@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ import java.util.Objects;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Bond;
-import gov.nih.ncats.witch.BondTable;
-import gov.nih.ncats.witch.Chemical;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Bond;
+import gov.nih.ncats.molwitch.BondTable;
+import gov.nih.ncats.molwitch.Chemical;
 
 import static org.junit.Assert.*;
 

@@ -16,15 +16,15 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.AtomCoordinates;
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.io.ChemicalReader;
-import gov.nih.ncats.witch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.AtomCoordinates;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.io.ChemicalReader;
+import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
 
 import static org.junit.Assert.*;
 

@@ -16,9 +16,8 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -26,10 +25,10 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.ChemicalBuilder;
-import gov.nih.ncats.witch.io.ChemFormat.MolFormatSpecification;
-import gov.nih.ncats.witch.io.ChemFormat.MolFormatSpecification.CoordinateOptions;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.ChemicalBuilder;
+import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification;
+import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification.CoordinateOptions;
 
 import static org.junit.Assert.*;
 

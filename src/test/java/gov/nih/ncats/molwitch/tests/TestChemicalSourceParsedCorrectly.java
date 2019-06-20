@@ -16,20 +16,20 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.ChemicalBuilder;
-import gov.nih.ncats.witch.ChemicalSource;
-import gov.nih.ncats.witch.SmilesSource;
-import gov.nih.ncats.witch.ChemicalSource.Type;
-import gov.nih.ncats.witch.io.ChemicalReader;
-import gov.nih.ncats.witch.io.ChemicalReaderFactory;
-import gov.nih.ncats.witch.io.StandardChemFormats;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.ChemicalBuilder;
+import gov.nih.ncats.molwitch.ChemicalSource;
+import gov.nih.ncats.molwitch.SmilesSource;
+import gov.nih.ncats.molwitch.ChemicalSource.Type;
+import gov.nih.ncats.molwitch.io.ChemicalReader;
+import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.io.StandardChemFormats;
 
 import static org.junit.Assert.*;
 
@@ -42,7 +42,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 public class TestChemicalSourceParsedCorrectly {

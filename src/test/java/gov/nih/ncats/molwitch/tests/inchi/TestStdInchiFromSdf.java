@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests.inchi;
+package gov.nih.ncats.molwitch.tests.inchi;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,12 +31,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.inchi.InChiResult;
-import gov.nih.ncats.witch.inchi.Inchi;
-import gov.nih.ncats.witch.io.ChemicalReader;
-import gov.nih.ncats.witch.io.ChemicalReaderFactory;
-import gov.nih.ncats.witch.internal.InternalUtil;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.inchi.InChiResult;
+import gov.nih.ncats.molwitch.inchi.Inchi;
+import gov.nih.ncats.molwitch.io.ChemicalReader;
+import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.internal.InternalUtil;
 @RunWith(Parameterized.class)
 //@Ignore
 public class TestStdInchiFromSdf {

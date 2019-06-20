@@ -16,28 +16,28 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.io.ChemicalReader;
-import gov.nih.ncats.witch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.Stereocenter;
 
-public class ParseWeirdParityTest {
+public class EZTest {
 
-	
 	@Test
-	public void parse() throws IOException{
-		try(InputStream in = getClass().getResourceAsStream("/molFiles/weirdParity.mol");
-			ChemicalReader reader = ChemicalReaderFactory.newReader(in);
-			){
-			Chemical chem = reader.read();
-			
-			
+	public void check() throws IOException{
+		String smiles = "CC(C)[N@+]1([C@@H]2CC[C@H]1C[C@@H](C2)OC(=O)[C@H](c3ccccc3)C4CCCC4)C";
+		
+		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
+		
+		for(Stereocenter chirality : chem.getTetrahedrals()){
+			System.out.println(chirality);
+			if("N".equals(chirality.getCenterAtom().getSymbol())){
+				System.out.println(chirality.getChirality());
+			}
 		}
 	}
 }

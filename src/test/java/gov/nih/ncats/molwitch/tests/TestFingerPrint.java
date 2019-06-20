@@ -16,13 +16,13 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.util.BitSet;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.fingerprint.Fingerprint;
+import gov.nih.ncats.molwitch.fingerprint.Fingerprint;
 
 import static org.junit.Assert.*;
 public class TestFingerPrint {

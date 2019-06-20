@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,12 +26,12 @@ import java.util.stream.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.Chirality;
-import gov.nih.ncats.witch.ExtendedTetrahedralChirality;
-import gov.nih.ncats.witch.internal.InternalUtil;
-import gov.nih.ncats.witch.Bond.BondType;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.Chirality;
+import gov.nih.ncats.molwitch.ExtendedTetrahedralChirality;
+import gov.nih.ncats.molwitch.internal.InternalUtil;
+import gov.nih.ncats.molwitch.Bond.BondType;
 
 import static org.junit.Assert.*;
 

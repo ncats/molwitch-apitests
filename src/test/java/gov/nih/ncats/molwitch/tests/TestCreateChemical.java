@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -41,23 +41,23 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Bond;
-import gov.nih.ncats.witch.Bond.BondType;
-import gov.nih.ncats.witch.BondTable;
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.ChemicalBuilder;
-import gov.nih.ncats.witch.io.ChemFormat.ChemFormatWriterSpecification;
-import gov.nih.ncats.witch.io.ChemFormat.HydrogenEncoding;
-import gov.nih.ncats.witch.io.ChemFormat.KekulizationEncoding;
-import gov.nih.ncats.witch.io.ChemFormat.MolFormatSpecification;
-import gov.nih.ncats.witch.io.ChemFormat.SdfFormatSpecification;
-import gov.nih.ncats.witch.io.ChemFormat.SmilesChemFormat;
-import gov.nih.ncats.witch.io.ChemicalReader;
-import gov.nih.ncats.witch.io.ChemicalReaderFactory;
-import gov.nih.ncats.witch.io.ChemicalWriter;
-import gov.nih.ncats.witch.io.ChemicalWriterFactory;
-import gov.nih.ncats.witch.io.StandardChemFormats;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Bond;
+import gov.nih.ncats.molwitch.Bond.BondType;
+import gov.nih.ncats.molwitch.BondTable;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.ChemicalBuilder;
+import gov.nih.ncats.molwitch.io.ChemFormat.ChemFormatWriterSpecification;
+import gov.nih.ncats.molwitch.io.ChemFormat.HydrogenEncoding;
+import gov.nih.ncats.molwitch.io.ChemFormat.KekulizationEncoding;
+import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification;
+import gov.nih.ncats.molwitch.io.ChemFormat.SdfFormatSpecification;
+import gov.nih.ncats.molwitch.io.ChemFormat.SmilesChemFormat;
+import gov.nih.ncats.molwitch.io.ChemicalReader;
+import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.io.ChemicalWriter;
+import gov.nih.ncats.molwitch.io.ChemicalWriterFactory;
+import gov.nih.ncats.molwitch.io.StandardChemFormats;
 
 public class TestCreateChemical {
 

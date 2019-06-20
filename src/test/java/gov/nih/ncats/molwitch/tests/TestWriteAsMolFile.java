@@ -16,17 +16,16 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.io.ChemFormat.MolFormatSpecification;
-import gov.nih.ncats.witch.io.ChemFormat.MolFormatSpecification.Version;
-import gov.nih.ncats.witch.io.WriterOptionsBuilder;
-import gov.nih.ncats.witch.internal.source.MolFileInfo;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification;
+import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification.Version;
+import gov.nih.ncats.molwitch.internal.source.MolFileInfo;
 
 import static org.junit.Assert.*;
 

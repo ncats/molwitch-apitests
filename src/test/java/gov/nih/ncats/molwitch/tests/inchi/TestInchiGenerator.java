@@ -16,7 +16,7 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests.inchi;
+package gov.nih.ncats.molwitch.tests.inchi;
 
 import java.io.IOException;
 
@@ -24,12 +24,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Atom;
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.ChemicalBuilder;
-import gov.nih.ncats.witch.Bond.BondType;
-import gov.nih.ncats.witch.inchi.InChiResult;
-import gov.nih.ncats.witch.inchi.Inchi;
+import gov.nih.ncats.molwitch.Atom;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.ChemicalBuilder;
+import gov.nih.ncats.molwitch.Bond.BondType;
+import gov.nih.ncats.molwitch.inchi.InChiResult;
+import gov.nih.ncats.molwitch.inchi.Inchi;
 
 public class TestInchiGenerator {
 

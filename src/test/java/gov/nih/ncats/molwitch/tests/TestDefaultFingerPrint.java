@@ -16,14 +16,14 @@
  *    limitations under the License.
  */
 
-package gov.nih.ncats.witch.tests;
+package gov.nih.ncats.molwitch.tests;
 
 import org.junit.Test;
 
-import gov.nih.ncats.witch.Chemical;
-import gov.nih.ncats.witch.fingerprint.Fingerprint;
-import gov.nih.ncats.witch.fingerprint.Fingerprinter;
-import gov.nih.ncats.witch.fingerprint.Fingerprinters;
+import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.fingerprint.Fingerprint;
+import gov.nih.ncats.molwitch.fingerprint.Fingerprinter;
+import gov.nih.ncats.molwitch.fingerprint.Fingerprinters;
 
 import static org.junit.Assert.*;
 
