@@ -37,7 +37,8 @@ public class TestChemicalClone {
 		
 		Atom atom = chem.getAtom(0);
 		
-		assertEquals(atom, sut.getAtom(0));
+		assertNotSame(atom, sut.getAtom(0));
+		assertEquals(chem.toSmiles(), sut.toSmiles());
 	}
 	
 	private Chemical createFromSmiles(String smiles) throws IOException{

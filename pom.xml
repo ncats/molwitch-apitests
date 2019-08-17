@@ -6,7 +6,7 @@
 
     <groupId>gov.nih.ncats</groupId>
     <artifactId>molwitch-apitests</artifactId>
-    <version>0.5</version>
+    <version>0.5.1</version>
 
     <name>molwitch-apitests</name>
 
@@ -153,7 +153,7 @@
         <dependency>
             <groupId>gov.nih.ncats</groupId>
             <artifactId>molwitch</artifactId>
-            <version>0.5</version>
+            <version>0.5.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

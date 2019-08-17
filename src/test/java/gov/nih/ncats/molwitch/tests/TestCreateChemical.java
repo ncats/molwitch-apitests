@@ -36,6 +36,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import gov.nih.ncats.molwitch.io.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -52,12 +53,6 @@ import gov.nih.ncats.molwitch.io.ChemFormat.HydrogenEncoding;
 import gov.nih.ncats.molwitch.io.ChemFormat.KekulizationEncoding;
 import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification;
 import gov.nih.ncats.molwitch.io.ChemFormat.SdfFormatSpecification;
-import gov.nih.ncats.molwitch.io.ChemFormat.SmilesChemFormat;
-import gov.nih.ncats.molwitch.io.ChemicalReader;
-import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
-import gov.nih.ncats.molwitch.io.ChemicalWriter;
-import gov.nih.ncats.molwitch.io.ChemicalWriterFactory;
-import gov.nih.ncats.molwitch.io.StandardChemFormats;
 
 public class TestCreateChemical {
 
@@ -110,7 +105,7 @@ public class TestCreateChemical {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		chem.kekulize();
 		
-		assertSmilesMatch(smiles, chem.toSmiles(SmilesChemFormat.createOptions()
+		assertSmilesMatch(smiles, chem.toSmiles(new ChemFormat.SmilesFormatWriterSpecification()
 												.setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
 		
 	}
@@ -131,7 +126,7 @@ public class TestCreateChemical {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		chem.aromatize();
 		
-		assertSmilesMatch("C(CC1=CC=CC=C1)NCC2=CC=CC=C2", chem.toSmiles(SmilesChemFormat.createOptions()
+		assertSmilesMatch("C(CC1=CC=CC=C1)NCC2=CC=CC=C2", chem.toSmiles(new ChemFormat.SmilesFormatWriterSpecification()
 											.setKekulization(KekulizationEncoding.KEKULE)));
 		
 	}
@@ -169,7 +164,7 @@ public class TestCreateChemical {
 		chem.aromatize();
 	
 		
-		String actual= chem.toSmiles(SmilesChemFormat.createOptions()
+		String actual= chem.toSmiles(new ChemFormat.SmilesFormatWriterSpecification()
 									.setHydrogenEncoding(HydrogenEncoding.MAKE_EXPLICIT));
 		//can't do a String comparison because there is more than 1 way to print the smiles string with [H]s
 		//depending on how you branch.
@@ -212,11 +207,11 @@ public class TestCreateChemical {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		chem.aromatize();
 		
-		File f = writeToFile(SmilesChemFormat.createOptions(), chem);
+		File f = writeToFile(new ChemFormat.SmilesFormatWriterSpecification(), chem);
 		
 		Chemical actual = createFrom(StandardChemFormats.SMILES, f);
 		actual.aromatize();
-		assertSmilesMatch(smiles, actual.toSmiles(SmilesChemFormat.createOptions().setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
+		assertSmilesMatch(smiles, actual.toSmiles(new ChemFormat.SmilesFormatWriterSpecification().setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
 	}
 	
 	@Test
@@ -259,7 +254,7 @@ public class TestCreateChemical {
 			assertTrue(reader.canRead());
 			Chemical actual1 = reader.read();
 			actual1.aromatize();
-			assertSmilesMatch(smiles, actual1.toSmiles(SmilesChemFormat.createOptions()
+			assertSmilesMatch(smiles, actual1.toSmiles(new ChemFormat.SmilesFormatWriterSpecification()
 														.setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
 			
 			assertTrue(reader.canRead());
@@ -293,7 +288,7 @@ public class TestCreateChemical {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		chem.kekulize();
 		
-		File f = writeToFile(SmilesChemFormat.createOptions().setKekulization(KekulizationEncoding.KEKULE), chem);
+		File f = writeToFile(new ChemFormat.SmilesFormatWriterSpecification().setKekulization(KekulizationEncoding.KEKULE), chem);
 		String line= Files.lines(f.toPath()).findFirst().get();
 		assertTrue(line, line.contains("="));
 		Chemical actual = createFrom(StandardChemFormats.SMILES, f);
@@ -589,9 +584,9 @@ public class TestCreateChemical {
 			builder.addAtom(a.getSymbol());
 		}
 		for(Bond b : expected.getBonds()) {
-			builder.addBond(builder.atomAt(expected.indexOf(b.getAtom1())),
+			builder.addBond(builder.getAtom(expected.indexOf(b.getAtom1())),
 					
-					builder.atomAt(expected.indexOf(b.getAtom2())),
+					builder.getAtom(expected.indexOf(b.getAtom2())),
 					BondType.AROMATIC);
 		}
 		
@@ -603,7 +598,7 @@ public class TestCreateChemical {
 		for(Atom a : actual.getAtoms()) {
 			assertTrue(a.isInRing());
 		}
-		assertEquals("c1ccccc1", actual.toSmiles(SmilesChemFormat.createOptions()
+		assertEquals("c1ccccc1", actual.toSmiles(new ChemFormat.SmilesFormatWriterSpecification()
 											.setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
 	}
 	
@@ -670,6 +665,17 @@ public class TestCreateChemical {
 		Chemical chem = new Chemical();
 		chem.setProperty("foo", "bar");
 		assertEquals("bar", chem.getProperty("foo"));
+	}
+
+	@Test
+	public void removeProperty(){
+		Chemical chem = new Chemical();
+		chem.setProperty("foo", "bar");
+		assertEquals("bar", chem.getProperty("foo"));
+		chem.removeProperty("foo");
+
+		assertNull(chem.getProperty("foo"));
+
 	}
 	
 	@Test

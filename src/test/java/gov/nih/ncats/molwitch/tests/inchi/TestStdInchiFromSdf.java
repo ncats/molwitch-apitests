@@ -81,6 +81,9 @@ public class TestStdInchiFromSdf {
 		if(id.equals("CHEMBL439138")) {
 			InternalUtil.off();
 		}
+		if(this.result.getInchi() ==null){
+			throw new IllegalStateException(result.toString());
+		}
 		this.id = id;
 	}
 
