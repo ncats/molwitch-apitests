@@ -40,7 +40,9 @@ public class TestUnknownChemicalStringInput {
 	@Test
 	public void smarts() throws IOException{
 		Chemical chemical = Chemical.parse("[#7,#8]~C1=c2c3c(OC([#6])(O)C3=O)cc(O)c2=C(O)\\C=C/1");
-		assertEquals(ChemicalSource.Type.SMARTS, chemical.getSource().get().getType());
+		ChemicalSource.Type type = chemical.getSource().get().getType();
+		//some implementation might consider this smarts or marvin/jchem extended smiles cxsmiles
+		assertTrue(type.toString(), type == ChemicalSource.Type.SMARTS|| type == ChemicalSource.Type.SMILES);
 	}
 	
 	@Test

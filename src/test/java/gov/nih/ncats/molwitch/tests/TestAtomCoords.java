@@ -35,7 +35,7 @@ import java.util.Optional;
 public class TestAtomCoords {
 
 	@Test
-	public void unsetCoordsShouldDefaultToZero() {
+	public void unsetCoordsShouldDefaultToNull() {
 		Chemical chem = new Chemical();
 		Atom atom = chem.addAtom("C");
 
