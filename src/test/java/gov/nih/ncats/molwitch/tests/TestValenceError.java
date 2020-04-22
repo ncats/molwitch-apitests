@@ -43,6 +43,7 @@ public class TestValenceError {
 		list.add(new Object[]{false,"[O-2]"});
 		list.add(new Object[]{false,"[CH2]=O"});
 		list.add(new Object[]{true,"[CH3]=O"});
+		list.add(new Object[]{false, "C[N+](C)(C)C"});
 		return list;
 	}
 	
