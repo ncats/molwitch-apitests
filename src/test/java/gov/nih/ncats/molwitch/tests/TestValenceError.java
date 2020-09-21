@@ -57,7 +57,7 @@ public class TestValenceError {
 	@Test
 	public void checkValenceError() throws Exception {
 		Chemical c = Chemical.createFromSmiles(smiles);
-		boolean actualHasError = c.atoms().peek(a -> System.out.println("atom " + a)).anyMatch(Atom::hasValenceError);
+		boolean actualHasError = c.atoms().anyMatch(Atom::hasValenceError);
 		assertEquals(hasError, actualHasError);
 	}
 	

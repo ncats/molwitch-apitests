@@ -592,6 +592,7 @@ public class TestCreateChemical {
 		
 		Chemical actual = builder.build();
 		for(Bond b : actual.getBonds()) {
+			System.out.println(b);
 			assertTrue(b.isAromatic());
 			assertTrue(b.isInRing());
 		}

@@ -20,6 +20,7 @@ package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 
+import gov.nih.ncats.molwitch.io.ChemFormat;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
@@ -34,16 +35,13 @@ public class TestWriteAsMolFile {
 	private String smiles = "C(Cc1ccccc1)NCc2ccccc2";
 	
 	@Test
-	public void kekulizeMol() throws IOException{
+	public void forceKekulizeMol() throws IOException{
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		chem.setName("my_id");
 		
 		chem.aromatize();
-		
-//		String actual = chem.formatToString(StandardChemFormats.MOL, new WriterOptionsBuilder()
-//																			.kekulize()
-//																			.build());
-		String actual = chem.toMol();
+
+		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.KEKULE));
 		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
 		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
 		
@@ -57,8 +55,71 @@ public class TestWriteAsMolFile {
 		assertEquals("my_id", actualMol.getName());
 		
 	}
-	
-	
+
+	@Test
+	public void asIsKekulizeMol() throws IOException{
+		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
+		chem.setName("my_id");
+
+		chem.kekulize();
+
+		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.AS_IS));
+		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
+		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
+
+		assertEquals(expectedMol, actualMol);
+
+		assertEquals(0, actualMol.getNumberAromaticBonds());
+		assertEquals(3, actualMol.getNumberDoubleBonds());
+		assertEquals(6, actualMol.getNumberSingleBonds());
+		assertEquals(Version.V2000, actualMol.getVersion());
+
+		assertEquals("my_id", actualMol.getName());
+
+	}
+
+	@Test
+	public void aromatizeMol() throws IOException{
+		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
+		chem.setName("my_id");
+
+		chem.kekulize();
+
+		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.FORCE_AROMATIC));
+//		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
+		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
+
+//		assertEquals(expectedMol, actualMol);
+
+		assertEquals(6, actualMol.getNumberAromaticBonds());
+		assertEquals(0, actualMol.getNumberDoubleBonds());
+		assertEquals(3, actualMol.getNumberSingleBonds());
+		assertEquals(Version.V2000, actualMol.getVersion());
+
+		assertEquals("my_id", actualMol.getName());
+
+	}
+	@Test
+	public void aromatizeAsISMol() throws IOException{
+		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
+		chem.setName("my_id");
+
+		chem.aromatize();
+
+		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.AS_IS));
+		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
+		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
+
+//		assertEquals(expectedMol, actualMol);
+
+		assertEquals(6, actualMol.getNumberAromaticBonds());
+		assertEquals(0, actualMol.getNumberDoubleBonds());
+		assertEquals(3, actualMol.getNumberSingleBonds());
+		assertEquals(Version.V2000, actualMol.getVersion());
+
+		assertEquals("my_id", actualMol.getName());
+
+	}
 	
 	@Test
 	public void kekulizeMol3000() throws IOException{
@@ -66,7 +127,8 @@ public class TestWriteAsMolFile {
 		chem.setName("my_id");
 		chem.aromatize();
 		
-		String actual = chem.toMol( new MolFormatSpecification(Version.V3000));
+		String actual = chem.toMol( new MolFormatSpecification(Version.V3000)
+									.setKekulization(ChemFormat.KekulizationEncoding.KEKULE));
 
 		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
 		assertEquals("my_id", actualMol.getName());
