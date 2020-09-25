@@ -44,6 +44,13 @@ public class TestUnknownChemicalStringInput {
 		//some implementation might consider this smarts or marvin/jchem extended smiles cxsmiles
 		assertTrue(type.toString(), type == ChemicalSource.Type.SMARTS|| type == ChemicalSource.Type.SMILES);
 	}
+	@Test
+    public void complexSmarts() throws IOException{
+	    Chemical chemical = Chemical.parse("[#6]=,:[#6]C(CCCC([He])C(~[#8])c1cc([He])cc(c1)[#6]([#6])[He])CC=C");
+        ChemicalSource.Type type = chemical.getSource().get().getType();
+        //some implementation might consider this smarts or marvin/jchem extended smiles cxsmiles
+        assertTrue(type.toString(), type == ChemicalSource.Type.SMARTS|| type == ChemicalSource.Type.SMILES);
+    }
 	
 	@Test
 	public void mol() throws IOException{
