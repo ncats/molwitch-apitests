@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import gov.nih.ncats.molwitch.io.*;
 import org.junit.Rule;
@@ -258,13 +259,17 @@ public class TestCreateChemical {
 														.setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
 			
 			assertTrue(reader.canRead());
-			assertSmilesMatch("CN=C=O", reader.read().toSmiles());
+			assertSmilesMatch("CN=C=O", nextRead(reader).toSmiles());
 			
 			assertFalse(reader.canRead());
 		}
 		
 	}
-	
+
+	private Chemical nextRead(ChemicalReader reader) throws IOException {
+		return reader.read();
+	}
+
 	@Test
 	public void multipleMolFileShouldThrowIOExceptionWhenWritingSecondChemical() throws IOException{
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
@@ -478,7 +483,7 @@ public class TestCreateChemical {
 				writer.write(chem);
 			}
 		}
-		
+
 		return f;
 	}
 
@@ -729,16 +734,26 @@ public class TestCreateChemical {
 		Chemical c=Chemical.createFromSmiles("CCCCC");
 		Atom remAt=c.getAtom(3);
 		List<Bond> removedBonds = new ArrayList<>();
+		List<BondInfo> bondInfos = new ArrayList<>();
+
 		for(Bond b : remAt.getBonds()){
-			removedBonds.add(c.removeBond(b));
+			BondInfo info = new BondInfo();
+			info.otherAtom = b.getOtherAtom(remAt);
+			info.bondOrder = b.getBondType();
+			bondInfos.add(info);
 		}
 		
 		c.removeAtom(remAt);
 		
-		c.addAtom(remAt);
-		for(Bond b : removedBonds){
-			c.addBond(b);
+		Atom newAtom = c.addAtom(remAt);
+		for(BondInfo b : bondInfos){
+			c.addBond(newAtom, b.otherAtom, b.bondOrder);
 		}
 		assertEquals("CCCCC", c.toSmiles());
+	}
+
+	private static class BondInfo{
+		public Atom otherAtom;
+		public BondType bondOrder;
 	}
 }
