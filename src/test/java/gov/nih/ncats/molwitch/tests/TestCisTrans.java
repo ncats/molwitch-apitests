@@ -20,7 +20,9 @@ package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
+import gov.nih.ncats.molwitch.DoubleBondStereochemistry;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Bond;
@@ -41,4 +43,18 @@ public class TestCisTrans {
 		
 		assertEquals(Bond.DoubleBondStereo.E_TRANS, chem.getBond(0).getDoubleBondStereo());
 	}
+    @Test
+    public void getAllDoubleBondStereos() throws IOException{
+        String resourceName = "/molFiles/testdoublebondconfig.mol";
+        Chemical chem;
+        try(InputStream in = getClass().getResourceAsStream(resourceName)){
+            byte[] bytes = TestUtil.toByteArray(in);
+
+            chem = Chemical.parseMol(bytes);
+        }
+        List<DoubleBondStereochemistry> cisTrans = chem.getDoubleBondStereochemistry();
+        assertEquals(1, cisTrans.size());
+
+        assertEquals(Bond.DoubleBondStereo.E_TRANS, cisTrans.get(0).getDoubleBond().getDoubleBondStereo());
+    }
 }

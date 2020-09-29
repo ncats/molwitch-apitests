@@ -24,7 +24,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ValenceErrorMol {
+public class TestValenceErrorMol {
 
     @Test
     public void mol() throws Exception{

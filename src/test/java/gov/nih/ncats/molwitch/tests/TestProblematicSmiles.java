@@ -24,7 +24,7 @@ import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.ChemicalBuilder;
-public class ProblematicSmiles {
+public class TestProblematicSmiles {
 //Cl.COc4ccc5nc1c(CC[N@]3C[C@H]2C[C@@H]1[C@@H]3[C@H](C2)CC)c5c4    NCGC00247731-01
 	
 	@Test
