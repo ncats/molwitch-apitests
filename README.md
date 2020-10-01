@@ -9,7 +9,7 @@ To run these tests for your implementation add this as a dependency in your mave
     <dependency>
             <groupId>gov.nih.ncats</groupId>
             <artifactId>molwitch-apitests</artifactId>
-            <version>0.5.2</version>
+            <version>0.6.0</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
