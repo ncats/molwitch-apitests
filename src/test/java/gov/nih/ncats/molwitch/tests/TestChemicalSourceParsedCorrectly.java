@@ -83,7 +83,7 @@ public class TestChemicalSourceParsedCorrectly {
 				assertFalse(reader.canRead());
 		}
 	}
-	private static String blankoutProgramLine(String mol) throws IOException{
+	private static String blankoutProgramLineIgnoreProperites(String mol) throws IOException{
 		StringBuilder builder = new StringBuilder(mol.length());
 		
 		int i=0;
@@ -96,6 +96,9 @@ public class TestChemicalSourceParsedCorrectly {
 				}else{
 					builder.append(line).append(System.lineSeparator());
 				}
+				if("M  END".startsWith(line)){
+				    break;
+                }
 			}
 			
 		}
@@ -103,7 +106,7 @@ public class TestChemicalSourceParsedCorrectly {
 	}
 	
 	private static void assertMolEqualsIgnoringProgramLine(String expected, String actual) throws IOException{
-		assertEquals(blankoutProgramLine(expected), blankoutProgramLine(actual));
+		assertEquals(blankoutProgramLineIgnoreProperites(expected), blankoutProgramLineIgnoreProperites(actual));
 	}
 	@Test
 	public void chemicalFromSdfShouldHaveSdfAsSource() throws IOException{

@@ -24,8 +24,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
+import gov.nih.ncats.common.util.SingleThreadCounter;
+import gov.nih.ncats.molwitch.tests.contract.ApiContractChecker;
+import gov.nih.ncats.molwitch.tests.contract.ApiContractException;
+import gov.nih.ncats.molwitch.tests.contract.PercentageApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -45,7 +52,17 @@ public class TestStdInchiFromSdf {
 	private String expectedKey;
 	private String expectedInchi;
 	private String id;
-	
+
+	@ClassRule
+	public static PercentageApiContractChecker apiContractChecker = new PercentageApiContractChecker(map->{
+	    //there are 1000 records let's make it fail for > 1%
+        return map.entrySet().stream()
+                    .filter(e-> e.getValue() < 0.990D)
+                    .findAny()
+                    .isPresent();
+
+    });
+
 	@Parameters(name = "{3}")
 	public static List<Object[]> data() throws IOException{
 		List<Object[]> list = new ArrayList<>();
@@ -74,13 +91,9 @@ public class TestStdInchiFromSdf {
 	public TestStdInchiFromSdf(String expectedInchi, String key, Chemical chem, String id) throws IOException {
 		this.expectedInchi = expectedInchi;
 		this.expectedKey = key;
-		if(id.equals("CHEMBL439138")) {
-			InternalUtil.on();
-		}
+
 		this.result = Inchi.asStdInchi(chem, true);
-		if(id.equals("CHEMBL439138")) {
-			InternalUtil.off();
-		}
+
 		if(this.result.getInchi() ==null){
 			throw new IllegalStateException(result.toString());
 		}
@@ -88,15 +101,19 @@ public class TestStdInchiFromSdf {
 	}
 
 
+
 	@Test
 	public void mol2Inchi(){
-	
-		assertEquals(id + " : " + result.getMessage(), expectedInchi, removeInChiPrefix(result.getInchi()));
+	    String actual = removeInChiPrefix(result.getInchi());
+
+		apiContractChecker.addComplianceReport("fullInchi",
+                expectedInchi.equals(actual)? ApiContractChecker.ComplianceLevel.FULLY: ApiContractChecker.ComplianceLevel.NOT_COMPLIANT );
 		
 	}
 	
 	@Test
 	public void key(){
-		assertEquals(id, expectedKey, result.getKey());
+        apiContractChecker.addComplianceReport("inchiKey",
+                expectedKey.equals(result.getKey()) ? ApiContractChecker.ComplianceLevel.FULLY: ApiContractChecker.ComplianceLevel.NOT_COMPLIANT);
 	}
 }
