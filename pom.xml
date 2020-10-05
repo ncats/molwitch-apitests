@@ -6,7 +6,7 @@
 
     <groupId>gov.nih.ncats</groupId>
     <artifactId>molwitch-apitests</artifactId>
-    <version>0.6.0</version>
+    <version>0.6.1</version>
 
     <name>molwitch-apitests</name>
 
