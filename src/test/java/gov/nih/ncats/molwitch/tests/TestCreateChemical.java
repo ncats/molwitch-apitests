@@ -38,6 +38,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import gov.nih.ncats.molwitch.io.*;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.Assert;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -56,8 +59,11 @@ import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification;
 import gov.nih.ncats.molwitch.io.ChemFormat.SdfFormatSpecification;
 
 public class TestCreateChemical {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Create Chemical");
 
-	@Rule
+
+    @Rule
 	public ExpectedException expectedException = ExpectedException.none();
 	
 	@Rule
@@ -73,9 +79,6 @@ public class TestCreateChemical {
 	
 	private static Chemical createFrom(String format, File f) throws IOException{
 		try(ChemicalReader reader = ChemicalReaderFactory.newReader(format, f)){
-			if(reader ==null) {
-				System.out.println("here!!!!");
-			}
 			return reader.read();
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -221,8 +224,6 @@ public class TestCreateChemical {
 		chem.aromatize();
 		
 		File f = writeToFile(new MolFormatSpecification(), chem);
-		System.out.println("mol file written =\n==================");
-		Files.lines(f.toPath()).forEach(System.out::println);
 		
 		Chemical actual = createFrom(StandardChemFormats.MOL, f);
 		actual.aromatize();
@@ -278,10 +279,15 @@ public class TestCreateChemical {
 		File f = temp.newFile();
 		
 		try(ChemicalWriter writer = ChemicalWriterFactory.newWriter(new MolFormatSpecification()
-				, f)){
+				, f)) {
 			writer.write(chem);
-			expectedException.expect(IOException.class);
-			writer.write(chem);
+			try {
+				writer.write(chem);
+				Assert.fail("should have thown an IO Exception");
+			} catch (IOException e) {
+				//expected can't use expectedException anymore
+				//because the API checker swallows all exceptions when processing
+			}
 		}
 			
 		
@@ -332,15 +338,6 @@ public class TestCreateChemical {
 	
 	private void assertSmilesMatch(String expected, String actual){
 		if(!expected.equals(actual)){
-			
-			System.out.println("EXPECTED = " + expected);
-			System.out.println("ACTUAL = " + actual);
-//			
-//			//some smiles implementations have extra paraens 
-//			//in rings so check for that...
-//			String fixed = actual.replaceAll("(\\d+)\\(", "$1")
-//								.replaceAll("(\\d+)\\)", "$1");
-//			assertEquals(expected, fixed);
 			
 			assertSmilesCloseEnough(expected, actual);
 			return;
@@ -597,7 +594,6 @@ public class TestCreateChemical {
 		
 		Chemical actual = builder.build();
 		for(Bond b : actual.getBonds()) {
-			System.out.println(b);
 			assertTrue(b.isAromatic());
 			assertTrue(b.isInRing());
 		}

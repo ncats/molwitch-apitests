@@ -20,6 +20,9 @@ package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Atom;
@@ -28,8 +31,10 @@ import gov.nih.ncats.molwitch.Chemical;
 import static org.junit.Assert.*;
 
 public class TestChemicalClone {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Clone Chemical");
 
-	@Test
+    @Test
 	public void cloneShouldHaveSameSmiles() throws IOException{
 		Chemical chem = createFromSmiles("c1ccccc1");
 		

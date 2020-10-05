@@ -20,6 +20,9 @@ package gov.nih.ncats.molwitch.tests;
 
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.search.MolSearcherFactory;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -28,6 +31,8 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 public class MolSearcherTest {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("MolSearcher");
 
     @Test
     public void ensureIsobutaneSSSDoesntReturnIsoPentene() throws Exception{

@@ -24,6 +24,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Atom;
@@ -35,6 +38,9 @@ import static org.junit.Assert.*;
 
 
 public class TestDfs {
+
+	@ClassRule @Rule
+	public static BasicApiContractChecker checker = new BasicApiContractChecker("Atom Path Traversal");
 
 	@Test
 	public void onePath() throws IOException{

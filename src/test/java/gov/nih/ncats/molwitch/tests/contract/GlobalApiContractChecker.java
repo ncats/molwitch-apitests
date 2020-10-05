@@ -49,5 +49,11 @@ public enum GlobalApiContractChecker {
 
     }
 
+    public Map<String, Map<ApiContractChecker.ComplianceLevel, SingleThreadCounter>> getMap() {
+        return map;
+    }
 
+    public Map<String, Map<ApiContractChecker.ComplianceLevel, Set<String>>> getComplianceMessageMap() {
+        return complianceMessageMap;
+    }
 }

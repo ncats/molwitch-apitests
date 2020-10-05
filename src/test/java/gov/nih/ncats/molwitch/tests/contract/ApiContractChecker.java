@@ -62,15 +62,43 @@ public class ApiContractChecker extends ExternalResource {
 
     @Override
     public Statement apply(Statement base, Description description) {
-        try {
-            return super.apply(base, description);
-        }catch(ApiContractException e){
-            addComplianceReport(e.getCategory(), e.getComplianceLevel(), e.getComplianceMessage());
-            if(e.getComplianceLevel() == ComplianceLevel.NOT_COMPLIANT){
-                throw e;
+
+
+            if(base.getClass().getName().startsWith("org.junit.runners.ParentRunner")){
+                //this is from the ClassRule which will never throw an exception
+                //do nothing
+                return super.apply(base, description);
+            }else {
+               return new Statement() {
+                   @Override
+                   public void evaluate() throws Throwable {
+                       try {
+                           base.evaluate();
+                           handlePassingTest();
+                       }catch(ApiContractException e){
+//                           e.printStackTrace();
+                           addComplianceReport(e.getCategory(), e.getComplianceLevel(), e.getComplianceMessage());
+                           if(e.getComplianceLevel() == ComplianceLevel.NOT_COMPLIANT){
+                               handleFailingTest();
+//                               throw e;
+                           }
+                       }catch(Throwable t){
+//                           t.printStackTrace();
+                           handleFailingTest();
+//                           throw t;
+                       }
+                   }
+               };
             }
-            return base;
-        }
+
+    }
+    protected void handleFailingTest() {
+    }
+    protected void handlePassingTest() {
+    }
+
+    protected void handleUncaughtThrowable(Throwable t){
+
     }
     public void addComplianceReport(String category, ComplianceLevel complianceLevel){
         addComplianceReport(category, complianceLevel, Optional.empty());

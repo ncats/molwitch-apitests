@@ -18,6 +18,8 @@
 
 package gov.nih.ncats.molwitch.tests;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -45,6 +47,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 public class TestChemicalSourceParsedCorrectly {
+	@ClassRule @Rule
+	public static BasicApiContractChecker checker = new BasicApiContractChecker("Chemical Source");
+
 	@Rule
 	public TemporaryFolder tmpDir = new TemporaryFolder();
 	

@@ -25,7 +25,10 @@ import gov.nih.ncats.molwitch.datastores.ChemicalDataStore;
 import gov.nih.ncats.molwitch.datastores.FileChemicalDataStore;
 import gov.nih.ncats.molwitch.io.ChemicalReader;
 import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -33,6 +36,10 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 public class TestSdfDataStore {
+
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("SDF DataStore");
+
     private static ChemicalDataStore sut;
 
     @BeforeClass

@@ -21,6 +21,9 @@ package gov.nih.ncats.molwitch.tests.inchi;
 import java.io.IOException;
 import java.util.Iterator;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -30,6 +33,9 @@ import gov.nih.ncats.molwitch.inchi.Inchi;
 
 import static org.junit.Assert.*;
 public class TestInchiParser {
+    @ClassRule
+    @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Inchi");
 
 	@Test
 	public void parse() throws IOException{

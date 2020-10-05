@@ -24,14 +24,19 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.Scanner;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.ChemicalSource;
 
 public class TestUnknownChemicalStringInput {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("mol parser unknown format");
 
-	@Test
+    @Test
 	public void smiles() throws IOException{
 		Chemical chemical = Chemical.parse("COC1=CC=C(O)C2=C(O)C(C)=C3OC(C)(O)C(=O)C3=C12");
 		assertEquals(ChemicalSource.Type.SMILES, chemical.getSource().get().getType());

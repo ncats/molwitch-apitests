@@ -21,6 +21,9 @@ package gov.nih.ncats.molwitch.tests;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -35,8 +38,10 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class TestValenceError {
 
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Valence Error");
 
-	@Parameters(name = "{1}")
+    @Parameters(name = "{1}")
 	public static List<Object[]> data(){
 		List<Object[]> list = new ArrayList<>();
 		list.add(new Object[]{true,"[O-3]"});

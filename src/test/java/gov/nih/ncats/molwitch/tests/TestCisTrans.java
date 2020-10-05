@@ -23,6 +23,9 @@ import java.io.InputStream;
 import java.util.List;
 
 import gov.nih.ncats.molwitch.DoubleBondStereochemistry;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Bond;
@@ -30,8 +33,10 @@ import gov.nih.ncats.molwitch.Chemical;
 
 import static org.junit.Assert.*;
 public class TestCisTrans {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Cis/Trans");
 
-	@Test
+    @Test
 	public void getCisTrans() throws IOException{
 		String resourceName = "/molFiles/testdoublebondconfig.mol";
 		Chemical chem;

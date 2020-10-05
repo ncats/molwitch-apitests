@@ -20,11 +20,16 @@ package gov.nih.ncats.molwitch.tests;
 
 import gov.nih.ncats.molwitch.Atom;
 import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class TestValenceErrorMol {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Valence Error");
 
     @Test
     public void mol() throws Exception{

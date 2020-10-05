@@ -19,6 +19,8 @@
 package gov.nih.ncats.molwitch.tests.inchi;
 
 import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.tests.contract.PercentageApiContractChecker;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -30,7 +32,15 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class InchiTest {
+    @ClassRule
+    public static PercentageApiContractChecker apiContractChecker = new PercentageApiContractChecker(map->{
+        //there are 2 records let's make it fail for > 1%
+        return map.entrySet().stream()
+                .filter(e-> e.getValue() < 1D)
+                .findAny()
+                .isPresent();
 
+    });
     private String expectedInchi, mol;
 
     public InchiTest(String expectedInchi, String mol) {

@@ -18,6 +18,9 @@
 
 package gov.nih.ncats.molwitch.tests;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
@@ -31,8 +34,10 @@ import java.io.IOException;
 
 
 public class TestDefaultFingerPrint {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Default Fingerprinter");
 
-	@Test
+    @Test
 	public void defaultNotNull(){
 		assertNotNull(Fingerprinters.getDefault());
 	}

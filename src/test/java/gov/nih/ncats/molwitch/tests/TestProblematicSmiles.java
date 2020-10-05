@@ -20,11 +20,17 @@ package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.ChemicalBuilder;
 public class TestProblematicSmiles {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Problematic Smiles");
+
 //Cl.COc4ccc5nc1c(CC[N@]3C[C@H]2C[C@@H]1[C@@H]3[C@H](C2)CC)c5c4    NCGC00247731-01
 	
 	@Test

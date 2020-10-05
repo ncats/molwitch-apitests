@@ -20,14 +20,19 @@ package gov.nih.ncats.molwitch.tests;
 
 import java.util.BitSet;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.fingerprint.Fingerprint;
 
 import static org.junit.Assert.*;
 public class TestFingerPrint {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Fingerprint");
 
-	private static double DELTA = 0.0001D;
+    private static double DELTA = 0.0001D;
 	
 	
 	@Test

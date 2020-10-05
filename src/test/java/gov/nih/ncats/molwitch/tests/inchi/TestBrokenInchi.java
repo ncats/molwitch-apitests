@@ -49,7 +49,7 @@ public class TestBrokenInchi {
 			String line = in.readLine(); //skip header
 			while( (line = in.readLine()) !=null){
 				String[] fields = line.split("\t");
-				System.out.println(Arrays.toString(fields));
+//				System.out.println(Arrays.toString(fields));
 				String inchi = fields[0];
 				String smiles = fields[2];
 				String inchiKey = fields[3].substring(9);

@@ -24,6 +24,9 @@ import gov.nih.ncats.molwitch.ChemicalBuilder;
 import gov.nih.ncats.molwitch.SGroup;
 import gov.nih.ncats.molwitch.io.ChemicalReader;
 import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -31,6 +34,9 @@ import java.io.InputStream;
 
 import static org.junit.Assert.*;
 public class RemoveNonDiescriptHsTest {
+
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Remove Non Descript Hydrogens");
 
     @Test
     public void removeHsNoSgroups() throws IOException {

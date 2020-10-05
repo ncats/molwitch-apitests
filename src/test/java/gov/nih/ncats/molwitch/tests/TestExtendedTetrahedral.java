@@ -23,7 +23,10 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Atom;
@@ -36,8 +39,10 @@ import gov.nih.ncats.molwitch.Bond.BondType;
 import static org.junit.Assert.*;
 
 public class TestExtendedTetrahedral {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Extended Tetrahedral");
 
-	@Before
+    @Before
 	public void toggleDebugOn() {
 		InternalUtil.on();
 	}
@@ -134,8 +139,7 @@ public class TestExtendedTetrahedral {
 			
 			List<Atom> peripheralAtoms = extendedTetrahdral.getPeripheralAtoms();
 			assertEquals(4, peripheralAtoms.size());
-			
-			System.out.println(peripheralAtoms);
+
 			
 			assertEquals( "C", peripheralAtoms.get(0).getSymbol());
 			assertEquals( "H", peripheralAtoms.get(1).getSymbol());

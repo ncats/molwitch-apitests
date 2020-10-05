@@ -22,7 +22,10 @@ import static org.junit.Assert.*;
 
 import java.util.Optional;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Atom;
@@ -30,7 +33,10 @@ import gov.nih.ncats.molwitch.Chemical;
 
 public class TestAtomAlias {
 
-	private Chemical chem;
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Atom Alias");
+
+    private Chemical chem;
 	private Atom atom;
 	@Before
 	public void create() {

@@ -21,6 +21,9 @@ package gov.nih.ncats.molwitch.tests;
 import java.io.IOException;
 import java.io.InputStream;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
@@ -29,8 +32,11 @@ import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
 
 public class ParseWeirdParityTest {
 
-	
-	@Test
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("parse mol wierd parity");
+
+
+    @Test
 	public void parse() throws IOException{
 		try(InputStream in = getClass().getResourceAsStream("/molFiles/weirdParity.mol");
 			ChemicalReader reader = ChemicalReaderFactory.newReader(in);

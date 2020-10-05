@@ -25,6 +25,9 @@ import java.util.Scanner;
 
 import gov.nih.ncats.molwitch.Atom;
 import gov.nih.ncats.molwitch.Bond;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
@@ -35,8 +38,10 @@ import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification.CoordinateOpt
 import static org.junit.Assert.*;
 
 public class TestMolParser {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Mol Parser");
 
-	@Test
+    @Test
 	public void getProperties() throws IOException{
 		try(InputStream in = getClass().getResourceAsStream("/molFiles/withProperties.sdf")){
 			Chemical chem = Chemical.parseMol(TestUtil.toByteArray(in));

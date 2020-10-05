@@ -23,6 +23,9 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 import gov.nih.ncats.molwitch.ChemkitException;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Atom;
@@ -33,6 +36,9 @@ import gov.nih.ncats.molwitch.inchi.InChiResult;
 import gov.nih.ncats.molwitch.inchi.Inchi;
 
 public class TestInchiGenerator {
+    @ClassRule
+    @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Inchi");
 
 	// many of these tests taken from CDK's InChiGeneratorTest
 	@Test

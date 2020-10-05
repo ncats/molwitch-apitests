@@ -21,6 +21,9 @@ package gov.nih.ncats.molwitch.tests;
 import java.io.IOException;
 
 import gov.nih.ncats.molwitch.io.ChemFormat;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
@@ -31,8 +34,10 @@ import gov.nih.ncats.molwitch.internal.source.MolFileInfo;
 import static org.junit.Assert.*;
 
 public class TestWriteAsMolFile {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Write Mol");
 
-	private String smiles = "C(Cc1ccccc1)NCc2ccccc2";
+    private String smiles = "C(Cc1ccccc1)NCc2ccccc2";
 	
 	@Test
 	public void forceKekulizeMol() throws IOException{

@@ -20,6 +20,9 @@ package gov.nih.ncats.molwitch.tests;
 
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.TetrahedralChirality;
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.BufferedInputStream;
@@ -37,6 +40,8 @@ import static org.junit.Assert.*;
  * Created by katzelda on 7/30/19.
  */
 public class TestTetrahedrals {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Tetrahedral");
 
     @Test
     public void tetrahedralWithNcenterNotReal() throws IOException{

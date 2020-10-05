@@ -18,6 +18,9 @@
 
 package gov.nih.ncats.molwitch.tests;
 
+import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Atom;
@@ -33,8 +36,10 @@ import java.io.InputStream;
 import java.util.Optional;
 
 public class TestAtomCoords {
+    @ClassRule @Rule
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Atom Coords");
 
-	@Test
+    @Test
 	public void unsetCoordsShouldDefaultToNull() {
 		Chemical chem = new Chemical();
 		Atom atom = chem.addAtom("C");
