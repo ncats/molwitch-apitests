@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-import gov.nih.ncats.molwitch.ChemkitException;
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.ClassRule;
 import org.junit.Rule;
