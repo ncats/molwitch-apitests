@@ -37,7 +37,7 @@ import gov.nih.ncats.molwitch.inchi.InChiResult;
 import gov.nih.ncats.molwitch.inchi.Inchi;
 
 @Ignore
-public class TestBrokenInchi {
+public class BrokenInchiTestApi {
 
 	@Test
 	public void getInchiResults() throws IOException{

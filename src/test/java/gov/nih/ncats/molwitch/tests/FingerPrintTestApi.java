@@ -28,7 +28,7 @@ import org.junit.Test;
 import gov.nih.ncats.molwitch.fingerprint.Fingerprint;
 
 import static org.junit.Assert.*;
-public class TestFingerPrint {
+public class FingerPrintTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Fingerprint");
 

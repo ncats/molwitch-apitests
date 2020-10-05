@@ -30,7 +30,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 
-public class MolSearcherTest {
+public class MolSearcherTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("MolSearcher");
 

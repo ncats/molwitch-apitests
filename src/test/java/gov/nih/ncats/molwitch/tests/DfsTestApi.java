@@ -37,7 +37,7 @@ import gov.nih.ncats.molwitch.Chemical;
 import static org.junit.Assert.*;
 
 
-public class TestDfs {
+public class DfsTestApi {
 
 	@ClassRule @Rule
 	public static BasicApiContractChecker checker = new BasicApiContractChecker("Atom Path Traversal");

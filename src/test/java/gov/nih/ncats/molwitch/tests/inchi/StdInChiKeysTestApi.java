@@ -38,7 +38,7 @@ import gov.nih.ncats.molwitch.inchi.InChiResult;
 import gov.nih.ncats.molwitch.inchi.Inchi;
 @RunWith(Parameterized.class)
 @Ignore("some tests still fail")
-public class TestStdInChiKeys {
+public class StdInChiKeysTestApi {
 
 	private String inchi;
 	private String key;
@@ -74,8 +74,8 @@ public class TestStdInChiKeys {
 		Set<String> toSkip = keysToSkip();
 		//TODO fix more
 		int count=1000;
-		try(InputStream in = TestStdInChiKeys.class.getResourceAsStream("/inChis/with_stdinchikey.txt");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new BufferedInputStream(in)));
+		try(InputStream in = StdInChiKeysTestApi.class.getResourceAsStream("/inChis/with_stdinchikey.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new BufferedInputStream(in)));
 		){
 			String line;
 			int i=0;
@@ -95,7 +95,7 @@ public class TestStdInChiKeys {
 		return list;
 	}
 	
-	public TestStdInChiKeys(String inchi, String smiles, String inchiKey) throws IOException {
+	public StdInChiKeysTestApi(String inchi, String smiles, String inchiKey) throws IOException {
 		this.inchi = inchi;
 		this.key = inchiKey;
 

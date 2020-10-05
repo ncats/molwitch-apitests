@@ -39,7 +39,7 @@ import static org.junit.Assert.*;
 /**
  * Created by katzelda on 7/30/19.
  */
-public class TestTetrahedrals {
+public class TetrahedralsTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Tetrahedral");
 

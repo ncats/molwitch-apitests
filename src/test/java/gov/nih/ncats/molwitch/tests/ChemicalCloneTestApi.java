@@ -19,31 +19,35 @@
 package gov.nih.ncats.molwitch.tests;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
+import gov.nih.ncats.molwitch.Atom;
 import gov.nih.ncats.molwitch.Chemical;
-import gov.nih.ncats.molwitch.io.ChemicalReader;
-import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
 
-public class ParseWeirdParityTest {
+import static org.junit.Assert.*;
 
+public class ChemicalCloneTestApi {
     @ClassRule @Rule
-    public static BasicApiContractChecker checker = new BasicApiContractChecker("parse mol wierd parity");
-
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Clone Chemical");
 
     @Test
-	public void parse() throws IOException{
-		try(InputStream in = getClass().getResourceAsStream("/molFiles/weirdParity.mol");
-			ChemicalReader reader = ChemicalReaderFactory.newReader(in);
-			){
-			Chemical chem = reader.read();
-			
-			
-		}
+	public void cloneShouldHaveSameSmiles() throws IOException{
+		Chemical chem = createFromSmiles("c1ccccc1");
+		
+		Chemical sut = chem.copy();
+		
+		Atom atom = chem.getAtom(0);
+		
+		assertNotSame(atom, sut.getAtom(0));
+		assertEquals(chem.toSmiles(), sut.toSmiles());
+	}
+	
+	private Chemical createFromSmiles(String smiles) throws IOException{
+		return Chemical.createFromSmilesAndComputeCoordinates(smiles);
+		
 	}
 }

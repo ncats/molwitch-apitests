@@ -31,7 +31,7 @@ import org.junit.Test;
 import gov.nih.ncats.molwitch.Atom;
 import gov.nih.ncats.molwitch.Chemical;
 
-public class TestAtomAlias {
+public class AtomAliasTestApi {
 
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Atom Alias");

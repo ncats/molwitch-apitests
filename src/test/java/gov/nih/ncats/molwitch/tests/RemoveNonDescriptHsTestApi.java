@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import static org.junit.Assert.*;
-public class RemoveNonDiescriptHsTest {
+public class RemoveNonDescriptHsTestApi {
 
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Remove Non Descript Hydrogens");

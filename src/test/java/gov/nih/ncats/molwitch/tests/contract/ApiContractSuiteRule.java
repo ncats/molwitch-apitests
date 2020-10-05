@@ -20,6 +20,7 @@ package gov.nih.ncats.molwitch.tests.contract;
 
 import gov.nih.ncats.common.Tuple;
 import gov.nih.ncats.common.util.SingleThreadCounter;
+import gov.nih.ncats.molwitch.MolWitch;
 import org.junit.rules.ExternalResource;
 
 import java.util.*;
@@ -29,7 +30,7 @@ public class ApiContractSuiteRule extends ExternalResource {
     @Override
     protected void after() {
 //        System.out.println(GlobalApiContractChecker.INSTANCE.getMap());
-        System.out.println("====== COMPLIANCE CONTRACT RESULTS ========");
+        System.out.println("====== " + MolWitch.getModuleName() + " COMPLIANCE CONTRACT RESULTS ========");
         try {
             for (Map.Entry<String, Map<ApiContractChecker.ComplianceLevel, SingleThreadCounter>> entry : GlobalApiContractChecker.INSTANCE.getMap().entrySet()) {
                 String category = entry.getKey();

@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.ChemicalBuilder;
-public class TestProblematicSmiles {
+public class ProblematicSmilesTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Problematic Smiles");
 

@@ -35,7 +35,7 @@ import gov.nih.ncats.molwitch.Bond.BondType;
 import gov.nih.ncats.molwitch.inchi.InChiResult;
 import gov.nih.ncats.molwitch.inchi.Inchi;
 
-public class TestInchiGenerator {
+public class InchiGeneratorTestApi {
     @ClassRule
     @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Inchi");

@@ -32,7 +32,7 @@ import static org.junit.Assert.*;
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.ChemicalSource;
 
-public class TestUnknownChemicalStringInput {
+public class UnknownChemicalStringInputTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("mol parser unknown format");
 

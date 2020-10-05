@@ -33,7 +33,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 
 
-public class TestDefaultFingerPrint {
+public class DefaultFingerPrintTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Default Fingerprinter");
 

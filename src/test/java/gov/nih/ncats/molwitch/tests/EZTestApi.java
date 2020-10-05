@@ -25,29 +25,26 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import gov.nih.ncats.molwitch.Atom;
 import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.Stereocenter;
+import static org.junit.Assert.assertFalse;
 
-import static org.junit.Assert.*;
+public class EZTestApi {
 
-public class TestChemicalClone {
     @ClassRule @Rule
-    public static BasicApiContractChecker checker = new BasicApiContractChecker("Clone Chemical");
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Tetrahedral");
 
-    @Test
-	public void cloneShouldHaveSameSmiles() throws IOException{
-		Chemical chem = createFromSmiles("c1ccccc1");
+	@Test
+	public void check() throws IOException{
+		String smiles = "CC(C)[N@+]1([C@@H]2CC[C@H]1C[C@@H](C2)OC(=O)[C@H](c3ccccc3)C4CCCC4)C";
 		
-		Chemical sut = chem.copy();
-		
-		Atom atom = chem.getAtom(0);
-		
-		assertNotSame(atom, sut.getAtom(0));
-		assertEquals(chem.toSmiles(), sut.toSmiles());
-	}
-	
-	private Chemical createFromSmiles(String smiles) throws IOException{
-		return Chemical.createFromSmilesAndComputeCoordinates(smiles);
-		
+		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
+		assertFalse(chem.getTetrahedrals().isEmpty());
+//		for(Stereocenter chirality : chem.getTetrahedrals()){
+//			System.out.println(chirality);
+//			if("N".equals(chirality.getCenterAtom().getSymbol())){
+//				System.out.println(chirality.getChirality());
+//			}
+//		}
 	}
 }

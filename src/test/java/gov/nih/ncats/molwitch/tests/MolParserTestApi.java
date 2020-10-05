@@ -37,7 +37,7 @@ import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification.CoordinateOpt
 
 import static org.junit.Assert.*;
 
-public class TestMolParser {
+public class MolParserTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Mol Parser");
 

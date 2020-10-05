@@ -31,7 +31,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class InchiTest {
+public class InchiTestApi {
     @ClassRule
     public static PercentageApiContractChecker apiContractChecker = new PercentageApiContractChecker(map->{
         //there are 2 records let's make it fail for > 1%
@@ -43,7 +43,7 @@ public class InchiTest {
     });
     private String expectedInchi, mol;
 
-    public InchiTest(String expectedInchi, String mol) {
+    public InchiTestApi(String expectedInchi, String mol) {
         this.expectedInchi = expectedInchi;
         this.mol = mol;
     }

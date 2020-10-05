@@ -36,7 +36,7 @@ import static org.junit.Assert.*;
 //examples borrowed from CDK mailing list 
 //https://sourceforge.net/p/cdk/mailman/message/34477296/
 @RunWith(Parameterized.class)
-public class TestValenceError {
+public class ValenceErrorTestApi {
 
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Valence Error");
@@ -54,7 +54,7 @@ public class TestValenceError {
 	
 	private final boolean hasError;
 	private final String smiles;
-	public TestValenceError(boolean hasError, String smiles) {
+	public ValenceErrorTestApi(boolean hasError, String smiles) {
 		this.hasError = hasError;
 		this.smiles = smiles;
 	}

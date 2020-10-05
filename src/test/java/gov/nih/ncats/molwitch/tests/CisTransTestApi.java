@@ -32,7 +32,7 @@ import gov.nih.ncats.molwitch.Bond;
 import gov.nih.ncats.molwitch.Chemical;
 
 import static org.junit.Assert.*;
-public class TestCisTrans {
+public class CisTransTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Cis/Trans");
 

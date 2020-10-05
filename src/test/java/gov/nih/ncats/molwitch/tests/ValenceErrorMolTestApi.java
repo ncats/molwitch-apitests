@@ -28,7 +28,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TestValenceErrorMol {
+public class ValenceErrorMolTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Valence Error");
 

@@ -33,7 +33,7 @@ import gov.nih.ncats.molwitch.internal.source.MolFileInfo;
 
 import static org.junit.Assert.*;
 
-public class TestWriteAsMolFile {
+public class WriteAsMolFileTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Write Mol");
 
@@ -47,7 +47,7 @@ public class TestWriteAsMolFile {
 		chem.aromatize();
 
 		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.KEKULE));
-		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
+		MolFileInfo expectedMol = MolFileInfo.parseFrom(WriteAsMolFileTestApi.class.getResourceAsStream("/molFiles/simple.mol"));
 		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
 		
 		assertEquals(expectedMol, actualMol);
@@ -69,7 +69,7 @@ public class TestWriteAsMolFile {
 		chem.kekulize();
 
 		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.AS_IS));
-		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
+		MolFileInfo expectedMol = MolFileInfo.parseFrom(WriteAsMolFileTestApi.class.getResourceAsStream("/molFiles/simple.mol"));
 		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
 
 		assertEquals(expectedMol, actualMol);
@@ -112,7 +112,7 @@ public class TestWriteAsMolFile {
 		chem.aromatize();
 
 		String actual = chem.toMol(new MolFormatSpecification().setKekulization(ChemFormat.KekulizationEncoding.AS_IS));
-		MolFileInfo expectedMol = MolFileInfo.parseFrom(TestWriteAsMolFile.class.getResourceAsStream("/molFiles/simple.mol"));
+		MolFileInfo expectedMol = MolFileInfo.parseFrom(WriteAsMolFileTestApi.class.getResourceAsStream("/molFiles/simple.mol"));
 		MolFileInfo actualMol = MolFileInfo.parseFrom(actual);
 
 //		assertEquals(expectedMol, actualMol);

@@ -38,7 +38,7 @@ import gov.nih.ncats.molwitch.Bond.BondType;
 
 import static org.junit.Assert.*;
 
-public class TestExtendedTetrahedral {
+public class ExtendedTetrahedralTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Extended Tetrahedral");
 

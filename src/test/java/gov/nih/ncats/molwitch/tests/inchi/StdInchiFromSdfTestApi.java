@@ -24,15 +24,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
-import gov.nih.ncats.common.util.SingleThreadCounter;
 import gov.nih.ncats.molwitch.tests.contract.ApiContractChecker;
-import gov.nih.ncats.molwitch.tests.contract.ApiContractException;
 import gov.nih.ncats.molwitch.tests.contract.PercentageApiContractChecker;
 import org.junit.ClassRule;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -43,10 +39,10 @@ import gov.nih.ncats.molwitch.inchi.InChiResult;
 import gov.nih.ncats.molwitch.inchi.Inchi;
 import gov.nih.ncats.molwitch.io.ChemicalReader;
 import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
-import gov.nih.ncats.molwitch.internal.InternalUtil;
+
 @RunWith(Parameterized.class)
 //@Ignore
-public class TestStdInchiFromSdf {
+public class StdInchiFromSdfTestApi {
 
 	private InChiResult result;
 	private String expectedKey;
@@ -67,8 +63,8 @@ public class TestStdInchiFromSdf {
 	public static List<Object[]> data() throws IOException{
 		List<Object[]> list = new ArrayList<>();
 		try(//InputStream in = TestStdInchiFromSdf.class.getResourceAsStream("/molFiles/withProperties.sdf");
-				InputStream in = new GZIPInputStream(TestStdInchiFromSdf.class.getResourceAsStream("/inChis/chembl_24_1_with_1000_Inchis.sdf.gz"));
-				ChemicalReader reader = ChemicalReaderFactory.newReader(in);	
+            InputStream in = new GZIPInputStream(StdInchiFromSdfTestApi.class.getResourceAsStream("/inChis/chembl_24_1_with_1000_Inchis.sdf.gz"));
+            ChemicalReader reader = ChemicalReaderFactory.newReader(in);
 			){
 //			System.out.println("here");
 //			for(int i=0; i< 500; i++){
@@ -88,7 +84,7 @@ public class TestStdInchiFromSdf {
 		//substring 6 because all start "InChi="
 		return inchi.substring(6);
 	}
-	public TestStdInchiFromSdf(String expectedInchi, String key, Chemical chem, String id) throws IOException {
+	public StdInchiFromSdfTestApi(String expectedInchi, String key, Chemical chem, String id) throws IOException {
 		this.expectedInchi = expectedInchi;
 		this.expectedKey = key;
 

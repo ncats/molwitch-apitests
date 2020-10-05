@@ -58,7 +58,7 @@ import gov.nih.ncats.molwitch.io.ChemFormat.KekulizationEncoding;
 import gov.nih.ncats.molwitch.io.ChemFormat.MolFormatSpecification;
 import gov.nih.ncats.molwitch.io.ChemFormat.SdfFormatSpecification;
 
-public class TestCreateChemical {
+public class CreateChemicalTestApi {
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Create Chemical");
 

@@ -22,7 +22,6 @@ import gov.nih.ncats.common.io.InputStreamSupplier;
 import gov.nih.ncats.common.iter.CloseableIterator;
 import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.datastores.ChemicalDataStore;
-import gov.nih.ncats.molwitch.datastores.FileChemicalDataStore;
 import gov.nih.ncats.molwitch.io.ChemicalReader;
 import gov.nih.ncats.molwitch.io.ChemicalReaderFactory;
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
@@ -35,7 +34,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static org.junit.Assert.*;
-public class TestSdfDataStore {
+public class SdfDataStoreTestApi {
 
     @ClassRule @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("SDF DataStore");
@@ -44,7 +43,7 @@ public class TestSdfDataStore {
 
     @BeforeClass
     public static void createDataStore() throws IOException {
-        sut = ChemicalDataStore.forURL(TestSdfDataStore.class.getResource("/molFiles/Compound_000000001_000025000.sdf.gz"),
+        sut = ChemicalDataStore.forURL(SdfDataStoreTestApi.class.getResource("/molFiles/Compound_000000001_000025000.sdf.gz"),
                 25_000);
     }
 
@@ -55,7 +54,7 @@ public class TestSdfDataStore {
 
     @Test
     public void iterateChemicalMatchesReader() throws IOException{
-        try(ChemicalReader reader = ChemicalReaderFactory.newReader(InputStreamSupplier.forResourse(TestSdfDataStore.class.getResource("/molFiles/Compound_000000001_000025000.sdf.gz")).get());
+        try(ChemicalReader reader = ChemicalReaderFactory.newReader(InputStreamSupplier.forResourse(SdfDataStoreTestApi.class.getResource("/molFiles/Compound_000000001_000025000.sdf.gz")).get());
             CloseableIterator<Chemical> iter = sut.getIterator();
         ){
             int count=0;
@@ -76,7 +75,7 @@ public class TestSdfDataStore {
         Set<Integer> offsets = new HashSet<>(Arrays.asList(0, 40, 234, 767, 10_000, 11_000, 20_000, 23232));
 
         Map<Integer, Chemical> map = new HashMap<>();
-        try(ChemicalReader reader = ChemicalReaderFactory.newReader(InputStreamSupplier.forResourse(TestSdfDataStore.class.getResource("/molFiles/Compound_000000001_000025000.sdf.gz")).get());
+        try(ChemicalReader reader = ChemicalReaderFactory.newReader(InputStreamSupplier.forResourse(SdfDataStoreTestApi.class.getResource("/molFiles/Compound_000000001_000025000.sdf.gz")).get());
         ){
             int count=0;
             while(reader.canRead()){

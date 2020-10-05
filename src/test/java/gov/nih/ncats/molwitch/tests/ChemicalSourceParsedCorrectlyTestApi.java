@@ -46,7 +46,7 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-public class TestChemicalSourceParsedCorrectly {
+public class ChemicalSourceParsedCorrectlyTestApi {
 	@ClassRule @Rule
 	public static BasicApiContractChecker checker = new BasicApiContractChecker("Chemical Source");
 
@@ -138,8 +138,8 @@ public class TestChemicalSourceParsedCorrectly {
 	
 	
 	private String linesAsString(String resourcePath) throws IOException{
-		try(BufferedReader r = new BufferedReader(new InputStreamReader(TestChemicalSourceParsedCorrectly.class.getResourceAsStream(resourcePath)));
-				Stream<String> lines =  r.lines()){
+		try(BufferedReader r = new BufferedReader(new InputStreamReader(ChemicalSourceParsedCorrectlyTestApi.class.getResourceAsStream(resourcePath)));
+            Stream<String> lines =  r.lines()){
 			return lines.collect(Collectors.joining(System.lineSeparator()));
 		}
 	}

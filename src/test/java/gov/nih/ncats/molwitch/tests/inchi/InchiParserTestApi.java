@@ -32,7 +32,7 @@ import gov.nih.ncats.molwitch.Chemical;
 import gov.nih.ncats.molwitch.inchi.Inchi;
 
 import static org.junit.Assert.*;
-public class TestInchiParser {
+public class InchiParserTestApi {
     @ClassRule
     @Rule
     public static BasicApiContractChecker checker = new BasicApiContractChecker("Inchi");
