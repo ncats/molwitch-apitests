@@ -57,7 +57,7 @@ public class BasicApiContractChecker extends ApiContractChecker {
     protected void after() {
         long numRight = testResult.computeIfAbsent(TestResult.PASS, k-> new SingleThreadCounter()).getAsLong();
         long numFailed = testResult.computeIfAbsent(TestResult.FAIL, k-> new SingleThreadCounter()).getAsLong();
-//        System.out.println(defaultCategory + " : " + numRight + " vs " + numFailed);
+        System.out.println(defaultCategory + " : " + numRight + " vs " + numFailed);
         if(numFailed==0 && numRight>0){
             addComplianceReport(defaultCategory, ComplianceLevel.FULLY);
         }else if(numFailed>0){

@@ -20,6 +20,7 @@ package gov.nih.ncats.molwitch.tests;
 
 import gov.nih.ncats.molwitch.Atom;
 import gov.nih.ncats.molwitch.Chemical;
+import gov.nih.ncats.molwitch.tests.contract.ApiContract;
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -83,6 +84,35 @@ public class TestValenceErrorMol {
 
         Chemical c = Chemical.parse(mol);
         boolean actualHasError = c.atoms().anyMatch(Atom::hasValenceError);
+        assertTrue(actualHasError);
+    }
+    @Test
+    @ApiContract(category = "Valence Error", message = "Pentavalent Carbon Incorrect Valence")
+    public void pentavlentCarbonShouldHaveValenceError() throws Exception{
+        Chemical chem = Chemical.parse("[CH3]=O");
+        boolean actualHasError = chem.atoms().anyMatch(Atom::hasValenceError);
+        assertTrue(actualHasError);
+    }
+    @Test
+    @ApiContract(category = "Valence Error", message = "Hypervalent Oxygen Incorrect Valence")
+    public void hypervalenOxygenShouldHaveValenceError() throws Exception{
+        Chemical chem = Chemical.parse("CO(=O)C");
+        boolean actualHasError = chem.atoms().anyMatch(Atom::hasValenceError);
+        assertTrue(actualHasError);
+    }
+
+    @Test
+    @ApiContract(category = "Valence Error", message = "Hypervalent Hydrogen Incorrect Valence")
+    public void hypervalenHShouldHaveValenceError() throws Exception{
+        Chemical chem = Chemical.parse("\nACCLDraw10052011142D\n\n" +
+                "  3  2  0  0  0  0  0  0  0  0999 V2000\n" +
+                "    6.4375   -3.2813    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n" +
+                "    7.4604   -2.6907    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0\n" +
+                "    7.4604   -1.5092    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n" +
+                "  1  2  1  0  0  0  0\n" +
+                "  2  3  1  0  0  0  0\n" +
+                "M  END\n");
+        boolean actualHasError = chem.atoms().anyMatch(Atom::hasValenceError);
         assertTrue(actualHasError);
     }
 }

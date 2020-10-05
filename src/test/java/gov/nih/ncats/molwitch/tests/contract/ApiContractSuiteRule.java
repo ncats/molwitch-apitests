@@ -22,40 +22,47 @@ import gov.nih.ncats.common.Tuple;
 import gov.nih.ncats.common.util.SingleThreadCounter;
 import org.junit.rules.ExternalResource;
 
-import java.util.AbstractMap;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ApiContractSuiteRule extends ExternalResource {
     @Override
     protected void after() {
+//        System.out.println(GlobalApiContractChecker.INSTANCE.getMap());
         System.out.println("====== COMPLIANCE CONTRACT RESULTS ========");
-        for(Map.Entry<String, Map<ApiContractChecker.ComplianceLevel, SingleThreadCounter>> entry : GlobalApiContractChecker.INSTANCE.getMap().entrySet()){
-            String category = entry.getKey();
-            String result;
-            if(entry.getValue().size()  ==1){
-                Map.Entry<ApiContractChecker.ComplianceLevel, SingleThreadCounter> singleEntry = entry.getValue().entrySet().iterator().next();
-                result = singleEntry.getKey().toString();
-                System.out.println(category +"\t"+ result);
-                System.out.println("--------------------------");
-            }else {
-                Comparator<Map.Entry<ApiContractChecker.ComplianceLevel, Long>> SortByLargest = Comparator.<Map.Entry<ApiContractChecker.ComplianceLevel, Long>>comparingLong(e->e.getValue()).reversed();
-                Map<ApiContractChecker.ComplianceLevel, Long> map = entry.getValue().entrySet().stream()
-                                .map(e-> new AbstractMap.SimpleEntry<>(e.getKey(), e.getValue().getAsLong()))
-                                .sorted(SortByLargest)
-                                .collect(Collectors.toMap(e-> e.getKey(), e->e.getValue(),
-                                        (u, v) -> {
-                                            throw new IllegalStateException(String.format("Duplicate key %s", u));
-                                        },
-                                        LinkedHashMap::new));
+        try {
+            for (Map.Entry<String, Map<ApiContractChecker.ComplianceLevel, SingleThreadCounter>> entry : GlobalApiContractChecker.INSTANCE.getMap().entrySet()) {
+                String category = entry.getKey();
+                String result;
+                Map<ApiContractChecker.ComplianceLevel, Set<String>> messageMap = GlobalApiContractChecker.INSTANCE.getComplianceMessageMap().get(category);
+//                System.out.println("message map for " + category + " = " + messageMap);
+                if (entry.getValue().size() == 1) {
+                    Map.Entry<ApiContractChecker.ComplianceLevel, SingleThreadCounter> singleEntry = entry.getValue().entrySet().iterator().next();
+                    result = singleEntry.getKey().toString();
+                    System.out.println(category + "\t" + result + ((messageMap==null || messageMap.get(singleEntry.getKey()) == null) ? "" : messageMap.get(singleEntry.getKey()).stream().collect(Collectors.joining("; "))));
+                    System.out.println("--------------------------");
 
-                for (Map.Entry<ApiContractChecker.ComplianceLevel, Long> entry2 : map.entrySet()) {
-                    System.out.println(category +"\t"+ entry2.getKey() + " ( "+ entry2.getValue() + " )");
+                } else {
+                    Comparator<Map.Entry<ApiContractChecker.ComplianceLevel, Long>> SortByLargest = Comparator.<Map.Entry<ApiContractChecker.ComplianceLevel, Long>>comparingLong(e -> e.getValue()).reversed();
+                    Map<ApiContractChecker.ComplianceLevel, Long> map = entry.getValue().entrySet().stream()
+                            .map(e -> new AbstractMap.SimpleEntry<>(e.getKey(), e.getValue().getAsLong()))
+                            .sorted(SortByLargest)
+                            .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(),
+                                    (u, v) -> {
+                                        throw new IllegalStateException(String.format("Duplicate key %s", u));
+                                    },
+                                    LinkedHashMap::new));
+
+                    for (Map.Entry<ApiContractChecker.ComplianceLevel, Long> entry2 : map.entrySet()) {
+                        System.out.println(category + "\t" + entry2.getKey() + " ( " + entry2.getValue() + " )" + ((messageMap==null || messageMap.get(entry2.getKey()) == null )? "" : messageMap.get(entry2.getKey()).stream().collect(Collectors.joining("; ", " ", ""))));
+                    }
+                    System.out.println("--------------------------");
                 }
-                System.out.println("--------------------------");
+
             }
+        }catch(Throwable t){
+            t.printStackTrace();
+            throw t;
         }
     }
 }

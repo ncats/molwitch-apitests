@@ -39,6 +39,8 @@ public class ApiContractChecker extends ExternalResource {
 
     private final Function<Map<String, Map<ComplianceLevel, SingleThreadCounter>>, String> failIf;
 
+    private static final boolean ERROR_ON_FAILURE = Boolean.parseBoolean(System.getProperty("molwitch.apiContract.ErrorOnFailure", "false"));
+
     public ApiContractChecker(){
         this.failIf = m-> null;
     }
@@ -80,12 +82,27 @@ public class ApiContractChecker extends ExternalResource {
                            addComplianceReport(e.getCategory(), e.getComplianceLevel(), e.getComplianceMessage());
                            if(e.getComplianceLevel() == ComplianceLevel.NOT_COMPLIANT){
                                handleFailingTest();
-//                               throw e;
+                               if(ERROR_ON_FAILURE) {
+                                   throw e;
+                               }
                            }
                        }catch(Throwable t){
-//                           t.printStackTrace();
+                           ApiContract contract = description.getAnnotation(ApiContract.class);
+
+
+                           if(contract!=null){
+                               String category = contract.category();
+                               String message = contract.message();
+                               if(ApiContract.DEFAULT_NULL_MESSAGE.equals(message)){
+                                   message =null;
+                               }
+                               addComplianceReport(category, contract.complianceLevelOnFail, message);
+                           }
+                           t.printStackTrace();
                            handleFailingTest();
-//                           throw t;
+                           if(ERROR_ON_FAILURE) {
+                               throw t;
+                           }
                        }
                    }
                };
