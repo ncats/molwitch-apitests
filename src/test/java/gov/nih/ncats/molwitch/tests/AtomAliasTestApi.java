@@ -22,6 +22,7 @@ import static org.junit.Assert.*;
 
 import java.util.Optional;
 
+import gov.nih.ncats.molwitch.tests.contract.ApiContract;
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -57,11 +58,13 @@ public class AtomAliasTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "R Group")
 	public void notRGroupWithAliasUnset() {
 		assertFalse(atom.isRGroupAtom());
 		assertTrue(!atom.getRGroupIndex().isPresent());
 	}
 	@Test
+	@ApiContract(category = "R Group")
 	public void notRGroupWithAliasSetToSomethingElse() {
 		atom.setAlias("myAlias");
 		assertFalse(atom.isRGroupAtom());
@@ -69,6 +72,7 @@ public class AtomAliasTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "R Group")
 	public void isRGroupWithAliasSetToRXX() {
 		atom.setAlias("R10");
 		assertTrue(atom.isRGroupAtom());
@@ -76,6 +80,7 @@ public class AtomAliasTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "R Group")
 	public void isRGroupWithRGroupSetDirectly() {
 		atom.setRGroup(10);
 		assertTrue(atom.isRGroupAtom());
@@ -83,6 +88,7 @@ public class AtomAliasTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "R Group")
 	public void unsetAnAlreadySetRGroup() {
 		atom.setRGroup(10);
 		assertTrue(atom.isRGroupAtom());
@@ -92,6 +98,7 @@ public class AtomAliasTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "R Group")
 	public void unsetAnRGroupWithAnAliasAleadyExisting() {
 		atom.setAlias("foo");
 		atom.setRGroup(null);
@@ -103,6 +110,7 @@ public class AtomAliasTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "R Group")
 	public void changeRGroup() {
 		atom.setRGroup(10);
 		atom.setRGroup(5);

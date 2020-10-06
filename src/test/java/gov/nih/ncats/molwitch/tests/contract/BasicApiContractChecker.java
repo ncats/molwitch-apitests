@@ -35,6 +35,12 @@ public class BasicApiContractChecker extends ApiContractChecker {
     public BasicApiContractChecker(String defaultCategory) {
         this.defaultCategory = defaultCategory;
     }
+
+    @Override
+    protected String getDefaultCategory() {
+        return defaultCategory;
+    }
+
     private Map<TestResult, SingleThreadCounter> testResult = new EnumMap<>(TestResult.class);
 
     @Override

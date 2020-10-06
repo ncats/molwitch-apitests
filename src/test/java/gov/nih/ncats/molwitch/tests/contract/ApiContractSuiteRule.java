@@ -31,6 +31,8 @@ public class ApiContractSuiteRule extends ExternalResource {
     protected void after() {
 //        System.out.println(GlobalApiContractChecker.INSTANCE.getMap());
         System.out.println("====== " + MolWitch.getModuleName() + " COMPLIANCE CONTRACT RESULTS ========");
+
+        System.out.println("| Feature | Compliance Level | Comments|\n | ------ | ---------- | ---------- |");
         try {
             for (Map.Entry<String, Map<ApiContractChecker.ComplianceLevel, SingleThreadCounter>> entry : GlobalApiContractChecker.INSTANCE.getMap().entrySet()) {
                 String category = entry.getKey();
@@ -40,8 +42,8 @@ public class ApiContractSuiteRule extends ExternalResource {
                 if (entry.getValue().size() == 1) {
                     Map.Entry<ApiContractChecker.ComplianceLevel, SingleThreadCounter> singleEntry = entry.getValue().entrySet().iterator().next();
                     result = singleEntry.getKey().toString();
-                    System.out.println(category + "\t" + result + ((messageMap==null || messageMap.get(singleEntry.getKey()) == null) ? "" : messageMap.get(singleEntry.getKey()).stream().collect(Collectors.joining("; "))));
-                    System.out.println("--------------------------");
+                    System.out.println("| " + category + "| " + result + " | " + ((messageMap==null || messageMap.get(singleEntry.getKey()) == null) ? "" : messageMap.get(singleEntry.getKey()).stream().collect(Collectors.joining("; "))) + " |");
+
 
                 } else {
                     Comparator<Map.Entry<ApiContractChecker.ComplianceLevel, Long>> SortByLargest = Comparator.<Map.Entry<ApiContractChecker.ComplianceLevel, Long>>comparingLong(e -> e.getValue()).reversed();
@@ -55,9 +57,9 @@ public class ApiContractSuiteRule extends ExternalResource {
                                     LinkedHashMap::new));
 
                     for (Map.Entry<ApiContractChecker.ComplianceLevel, Long> entry2 : map.entrySet()) {
-                        System.out.println(category + "\t" + entry2.getKey() + " ( " + entry2.getValue() + " )" + ((messageMap==null || messageMap.get(entry2.getKey()) == null )? "" : messageMap.get(entry2.getKey()).stream().collect(Collectors.joining("; ", " ", ""))));
+                        System.out.println("| " + category + " | " + entry2.getKey() + " ( " + entry2.getValue() + " ) | " + ((messageMap==null || messageMap.get(entry2.getKey()) == null )? "" : messageMap.get(entry2.getKey()).stream().collect(Collectors.joining("; ", " ", ""))) + " |");
                     }
-                    System.out.println("--------------------------");
+//                    System.out.println("--------------------------");
                 }
 
             }

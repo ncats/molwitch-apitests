@@ -53,6 +53,10 @@ public class ApiContractChecker extends ExternalResource {
         complianceMessageMap = new HashMap<>();
     }
 
+    protected String getDefaultCategory(){
+        return "";
+    }
+
     @Override
     protected void after() {
         String errorMessage = failIf.apply(map);
@@ -92,6 +96,9 @@ public class ApiContractChecker extends ExternalResource {
 
                            if(contract!=null){
                                String category = contract.category();
+                               if(category==null ||category.trim().isEmpty() ){
+                                   category=getDefaultCategory();
+                               }
                                String message = contract.message();
                                if(ApiContract.DEFAULT_NULL_MESSAGE.equals(message)){
                                    message =null;

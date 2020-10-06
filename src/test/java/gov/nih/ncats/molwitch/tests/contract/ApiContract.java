@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiContract {
     public static String DEFAULT_NULL_MESSAGE= "";
-    String category();
+    String category() default DEFAULT_NULL_MESSAGE;
 
     String message()  default DEFAULT_NULL_MESSAGE;
 

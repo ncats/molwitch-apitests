@@ -38,6 +38,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import gov.nih.ncats.molwitch.io.*;
+import gov.nih.ncats.molwitch.tests.contract.ApiContract;
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.Assert;
 import org.junit.ClassRule;
@@ -308,6 +309,7 @@ public class CreateChemicalTestApi {
 	}
 	
 	@Test
+	@ApiContract(category = "Atom Map", message = "Can't Set Atom Map")
 	public void setAtomMap() throws IOException {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		
@@ -317,6 +319,7 @@ public class CreateChemicalTestApi {
 		assertEquals(8, chem.getAtom(4).getAtomToAtomMap().getAsInt());
 	}
 	@Test
+	@ApiContract(category = "Atom Map", message = "Can't Clear Atom Map")
 	public void notSetAtomMap() throws IOException {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		
@@ -324,6 +327,7 @@ public class CreateChemicalTestApi {
 		assertFalse(chem.getAtom(4).getAtomToAtomMap().isPresent());
 	}
 	@Test
+	@ApiContract(category = "Atom Map", message = "Can't Set Atom Map")
 	public void clearAtomMap() throws IOException {
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		

@@ -21,6 +21,7 @@ package gov.nih.ncats.molwitch.tests;
 import java.io.IOException;
 
 import gov.nih.ncats.molwitch.io.ChemFormat;
+import gov.nih.ncats.molwitch.tests.contract.ApiContract;
 import gov.nih.ncats.molwitch.tests.contract.BasicApiContractChecker;
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -127,6 +128,7 @@ public class WriteAsMolFileTestApi {
 	}
 	
 	@Test
+	@ApiContract( message = "can't write v3000")
 	public void kekulizeMol3000() throws IOException{
 		Chemical chem = Chemical.createFromSmilesAndComputeCoordinates(smiles);
 		chem.setName("my_id");
