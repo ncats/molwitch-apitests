@@ -159,23 +159,31 @@ public class FingerPrintTestApi {
 	public void jaccardDistanceCompletelyDifferent(){
 		Fingerprint fp =                    fingerPrint(1,1,1,1,1,1,1,1,1,1);
 		
-		double actual =fp.jaccardDistanceTo(new Fingerprint(new BitSet()));
+		double actual =fp.jaccardDistanceTo(new Fingerprint(new BitSet(),10));
 		
 		assertEquals(1, actual, DELTA);
+		assertEquals(10, fp.getLength());
+
 	}
-	
+	@Test
+	public void emptyBitsetWithLength(){
+		Fingerprint fp = new Fingerprint(new BitSet(),10);
+		assertEquals(10, fp.getLength());
+		assertEquals(0, fp.populationCount());
+	}
 	@Test
 	public void toBitSet(){
 		BitSet expected = BitSetOf(1,1,1,1,1,1,1,1,1,1);
 		
-		Fingerprint fp = new Fingerprint(expected);
+		Fingerprint fp = new Fingerprint(expected, 10);
 		
 		assertEquals(expected, fp.toBitSet());
-		
+		assertEquals(10, fp.getLength());
+		assertEquals(10, fp.populationCount());
 	}
 	
 	private static Fingerprint fingerPrint(int...values){
-		return new Fingerprint(BitSetOf(values));
+		return new Fingerprint(BitSetOf(values), values.length);
 	}
 	private static BitSet BitSetOf(int...values){
 		BitSet bits = new BitSet(values.length);

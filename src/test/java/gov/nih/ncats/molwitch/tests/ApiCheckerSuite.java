@@ -20,6 +20,7 @@ package gov.nih.ncats.molwitch.tests;
 
 import gov.nih.ncats.molwitch.tests.contract.ApiContractSuiteRule;
 import gov.nih.ncats.molwitch.tests.inchi.*;
+import gov.nih.ncats.molwitch.tests.isotopes.ParseMolWithUncommonIsotopes;
 import org.junit.ClassRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -53,7 +54,8 @@ import org.junit.runners.Suite;
         UnknownChemicalStringInputTestApi.class,
         ValenceErrorTestApi.class,
         ValenceErrorMolTestApi.class,
-        WriteAsMolFileTestApi.class
+        WriteAsMolFileTestApi.class,
+        ParseMolWithUncommonIsotopes.class
 })
 public class ApiCheckerSuite {
     @ClassRule

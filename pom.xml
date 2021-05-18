@@ -6,11 +6,11 @@
 
     <groupId>gov.nih.ncats</groupId>
     <artifactId>molwitch-apitests</artifactId>
-    <version>0.6.1</version>
+    <version>0.6.2-SNAPSHOT</version>
 
     <name>molwitch-apitests</name>
 
-    <url>https://spotlite.nih.gov/ncats/molwitch-apitests</url>
+    <url>https://github.com/ncats/molwitch-apitests</url>
     <description>Test package to make sure that Witch implementations meet interface specification
     </description>
     <organization>
@@ -39,7 +39,7 @@
     </developers>
 
     <scm>
-        <url>https://spotlite.nih.gov/ncats/molwitch-apitests</url>
+        <url>https://github.com/ncats/molwitch-apitests</url>
     </scm>
 
     <distributionManagement>
@@ -192,12 +192,12 @@
         <dependency>
             <groupId>gov.nih.ncats</groupId>
             <artifactId>molwitch</artifactId>
-            <version>0.6.0</version>
+            <version>0.6.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>gov.nih.ncats</groupId>
             <artifactId>ncats-common</artifactId>
-            <version>0.3.4</version>
+            <version>0.3.5</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
