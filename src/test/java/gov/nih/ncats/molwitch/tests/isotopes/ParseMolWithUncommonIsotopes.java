@@ -50,6 +50,10 @@ public class ParseMolWithUncommonIsotopes {
         Atom atom = c.getAtom(0);
         assertTrue(atom.isIsotope());
         assertEquals(99, atom.getMassNumber());
+
+
+        String writtenMol = c.toMol();
+        assertTrue(writtenMol, writtenMol.contains("ISO  1   1  99"));
     }
 
     @Test
@@ -84,5 +88,8 @@ public class ParseMolWithUncommonIsotopes {
         Atom atom = c.getAtom(0);
         assertTrue(atom.isIsotope());
         assertEquals(14, atom.getMassNumber());
+
+        String writtenMol = c.toMol();
+        assertTrue(writtenMol, writtenMol.contains("ISO  1   1  14"));
     }
 }

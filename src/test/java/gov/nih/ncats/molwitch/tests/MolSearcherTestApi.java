@@ -68,7 +68,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertFalse(hit.isPresent());
     }
@@ -107,7 +107,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
     }
@@ -154,7 +154,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
     }
@@ -201,7 +201,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
     }
@@ -225,7 +225,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertFalse(hit.isPresent());
 
@@ -251,7 +251,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
 
@@ -278,7 +278,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
 
@@ -306,7 +306,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
     }
@@ -334,7 +334,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
        assertTrue(hit.isPresent());
     }
@@ -361,7 +361,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
         assertTrue(hit.isPresent());
     }
@@ -452,7 +452,7 @@ public class MolSearcherTestApi {
 
 
 
-        Optional<int[]> hit = MolSearcherFactory.create(p).search(t);
+        Optional<int[]> hit = MolSearcherFactory.create(p).get().search(t);
 
 
         assertFalse(hit.isPresent());

@@ -39,7 +39,7 @@
     </developers>
 
     <scm>
-        <url>https://github.com/ncats/molwitch-apitests</url>
+        <url>https://github.com/ncats/molwitch-apitests.git</url>
     </scm>
 
     <distributionManagement>
