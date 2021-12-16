@@ -57,7 +57,8 @@ public class StdInchiFromSdfTestApi {
                     .findAny()
                     .isPresent();
 
-    });
+    }){
+	};
 
 	@Parameters(name = "{3}")
 	public static List<Object[]> data() throws IOException{
@@ -102,14 +103,22 @@ public class StdInchiFromSdfTestApi {
 	public void mol2Inchi(){
 	    String actual = removeInChiPrefix(result.getInchi());
 
+		boolean equals = expectedInchi.equals(actual);
+		if(!equals){
+			System.err.println("["+id + "]: full inchi wrong. : expected '"+expectedInchi +"' actual :'"+actual+"'");
+		}
 		apiContractChecker.addComplianceReport("fullInchi",
-                expectedInchi.equals(actual)? ApiContractChecker.ComplianceLevel.FULLY: ApiContractChecker.ComplianceLevel.NOT_COMPLIANT );
+                equals ? ApiContractChecker.ComplianceLevel.FULLY: ApiContractChecker.ComplianceLevel.NOT_COMPLIANT );
 		
 	}
 	
 	@Test
 	public void key(){
+		boolean equals = expectedKey.equals(result.getKey());
+		if(!equals){
+			System.err.println("["+id + "]: inchiKey wrong. : expected '"+expectedKey +"' actual :'"+result.getKey()+"'");
+		}
         apiContractChecker.addComplianceReport("inchiKey",
-                expectedKey.equals(result.getKey()) ? ApiContractChecker.ComplianceLevel.FULLY: ApiContractChecker.ComplianceLevel.NOT_COMPLIANT);
+				equals ? ApiContractChecker.ComplianceLevel.FULLY: ApiContractChecker.ComplianceLevel.NOT_COMPLIANT);
 	}
 }

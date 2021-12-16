@@ -54,7 +54,8 @@ public class BasicApiContractChecker extends ApiContractChecker {
     }
 
     @Override
-    protected void handleFailingTest() {
+    protected void handleFailingTest(Throwable t) {
+        t.printStackTrace();
         testResult.computeIfAbsent(TestResult.FAIL, p-> new SingleThreadCounter()).increment();
 
     }

@@ -42,6 +42,7 @@ public class PercentageApiContractChecker extends ApiContractChecker{
                             passCount.increment(entry2.getValue().getAsLong());
                             break;
                         default:
+
                             failCount.increment(entry2.getValue().getAsLong());
                     }
 
