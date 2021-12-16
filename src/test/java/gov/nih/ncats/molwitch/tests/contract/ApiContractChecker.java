@@ -85,7 +85,7 @@ public class ApiContractChecker extends ExternalResource {
 //                           e.printStackTrace();
                            addComplianceReport(e.getCategory(), e.getComplianceLevel(), e.getComplianceMessage());
                            if(e.getComplianceLevel() == ComplianceLevel.NOT_COMPLIANT){
-                               handleFailingTest();
+                               handleFailingTest(e);
                                if(ERROR_ON_FAILURE) {
                                    throw e;
                                }
@@ -106,7 +106,7 @@ public class ApiContractChecker extends ExternalResource {
                                addComplianceReport(category, contract.complianceLevelOnFail, message);
                            }
                            t.printStackTrace();
-                           handleFailingTest();
+                           handleFailingTest(t);
                            if(ERROR_ON_FAILURE) {
                                throw t;
                            }
@@ -116,7 +116,8 @@ public class ApiContractChecker extends ExternalResource {
             }
 
     }
-    protected void handleFailingTest() {
+    protected void handleFailingTest(Throwable t) {
+        t.printStackTrace();
     }
     protected void handlePassingTest() {
     }

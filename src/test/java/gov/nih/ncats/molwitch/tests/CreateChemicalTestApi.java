@@ -750,7 +750,9 @@ public class CreateChemicalTestApi {
 		for(BondInfo b : bondInfos){
 			c.addBond(newAtom, b.otherAtom, b.bondOrder);
 		}
-		assertEquals("CCCCC", c.toSmiles());
+		assertEquals("CCCCC", c.toSmiles(new ChemFormat.SmilesFormatWriterSpecification().
+													setHydrogenEncoding(HydrogenEncoding.MAKE_IMPLICIT)));
+
 	}
 
 	private static class BondInfo{

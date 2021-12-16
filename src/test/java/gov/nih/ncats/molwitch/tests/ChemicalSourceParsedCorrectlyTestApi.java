@@ -99,11 +99,14 @@ public class ChemicalSourceParsedCorrectlyTestApi {
 				if(i==2){
 					builder.append(System.lineSeparator());
 				}else{
-					builder.append(line).append(System.lineSeparator());
+					if("M  END".startsWith(line)){
+						builder.append(line.trim()).append(System.lineSeparator());
+						break;
+					}else {
+						builder.append(line).append(System.lineSeparator());
+					}
 				}
-				if("M  END".startsWith(line)){
-				    break;
-                }
+
 			}
 			
 		}
