@@ -90,7 +90,7 @@ public class InchiGeneratorTestApi {
 		
 		InChiResult result = Inchi.asStdInchi(mol);
 
-		 assertEquals("InChI=1S/C2H4/c1-2/h1-2H2", result.getInchi());
+		assertEquals("InChI=1S/C2H4/c1-2/h1-2H2", result.getInchi());
 	    
 	}
 	
