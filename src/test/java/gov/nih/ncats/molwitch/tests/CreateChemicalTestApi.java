@@ -605,6 +605,7 @@ public class CreateChemicalTestApi {
 			assertTrue(a.isInRing());
 		}
 		assertEquals("c1ccccc1", actual.toSmiles(new ChemFormat.SmilesFormatWriterSpecification()
+		                                    .setHydrogenEncoding(HydrogenEncoding.MAKE_IMPLICIT)
 											.setKekulization(KekulizationEncoding.FORCE_AROMATIC)));
 	}
 	

@@ -46,6 +46,7 @@ import org.junit.runners.Suite;
         DefaultFingerPrintTestApi.class,
         DfsTestApi.class,
         ExtendedTetrahedralTestApi.class,
+        HeteroAtomTetrahedralsTestApi.class,
         FingerPrintTestApi.class,
         MolParserTestApi.class,
         ProblematicSmilesTestApi.class,
