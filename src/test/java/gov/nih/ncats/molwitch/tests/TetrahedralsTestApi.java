@@ -50,7 +50,7 @@ public class TetrahedralsTestApi {
             Chemical c = Chemical.parseMol(in);
 
             List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-            tetrahedralChiralityList.stream().forEach(System.out::println);
+            
             assertEquals(2, tetrahedralChiralityList.size());
             Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
 

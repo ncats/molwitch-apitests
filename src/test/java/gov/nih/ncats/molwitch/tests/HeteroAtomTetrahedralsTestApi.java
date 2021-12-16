@@ -45,9 +45,9 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "  6  8  1  0  0  0  0\n"
                 + "M  END");
 
-        System.out.println(c.toMol());
+
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("P"), expected);
@@ -79,7 +79,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+       
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("P"), expected);
@@ -110,9 +110,9 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "  6  8  1  0  0  0  0\n"
                 + "M  END");
 
-        System.out.println(c.toMol());
+
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+
         assertEquals(0, tetrahedralChiralityList.size());
     }
 
@@ -140,10 +140,9 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "  6  8  1  0  0  0  0\n"
                 + "M  CHG  1   4  -1\n"
                 + "M  END");
-        System.out.println(c.toMol());
+
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-//        List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+
         assertEquals(0, tetrahedralChiralityList.size());
     }
 
@@ -173,7 +172,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+       
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("P"), expected);
@@ -207,7 +206,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("P"), expected);
@@ -243,7 +242,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("P"), expected);
@@ -282,9 +281,9 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "  6  8  1  0  0  0  0\n"
                 + "  4  9  1  0  0  0  0\n"
                 + "M  END");
-        System.out.println(c.toMol());
+
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("P"), expected);
@@ -311,7 +310,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 
         tetrahedralChiralityList = c.getTetrahedrals();
         assertEquals(tetrahedralChiralityList.get(0).getChirality(),Chirality.R);
-        System.out.println(c.toMol());
+
         
     }
 
@@ -334,7 +333,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -361,7 +360,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -396,7 +395,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -413,9 +412,9 @@ public class HeteroAtomTetrahedralsTestApi {
                 .findFirst()
                 .get();
 
-        System.out.println(c.toMol());
+
         satom.setChirality(Chirality.R);
-        System.out.println(c.toMol());
+
         schir=c.atoms().filter(at->at.getSymbol().equals("S"))
                 .map(at->at.getChirality())
                 .findFirst()
@@ -446,7 +445,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -497,7 +496,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -523,7 +522,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -557,7 +556,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);
@@ -582,7 +581,7 @@ public class HeteroAtomTetrahedralsTestApi {
                 + "M  END");
 
         List<TetrahedralChirality> tetrahedralChiralityList = c.getTetrahedrals();
-        tetrahedralChiralityList.stream().forEach(System.out::println);
+        
         assertEquals(1, tetrahedralChiralityList.size());
         Set<String> expected = tetrahedralChiralityList.stream().map(tet -> tet.getCenterAtom().getSymbol()).collect(Collectors.toSet());
         assertEquals(Collections.singleton("S"), expected);

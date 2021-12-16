@@ -61,7 +61,6 @@ public class ExtendedTetrahedralTestApi {
             Chemical c= Chemical.parseMol(in);
             c.makeHydrogensExplicit();
             c=Chemical.parseMol(c.toMol());
-            System.out.println(c.toMol());
             
             
             List<ExtendedTetrahedralChirality> list = c.getExtendedTetrahedrals();
@@ -190,7 +189,7 @@ public class ExtendedTetrahedralTestApi {
                     + "  3  6  1  6  0  0  0\n"
                     + "  3  7  1  1  0  0  0\n"
                     + "M  END");
-            System.out.println(c.toMol());
+
             List<ExtendedTetrahedralChirality> list = c.getExtendedTetrahedrals();
             
             assertEquals(1, list.size());
