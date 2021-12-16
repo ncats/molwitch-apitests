@@ -35,7 +35,7 @@ import static org.junit.Assert.*;
 public class InchiParserTestApi {
     @ClassRule
     @Rule
-    public static BasicApiContractChecker checker = new BasicApiContractChecker("Inchi");
+    public static BasicApiContractChecker checker = new BasicApiContractChecker("Inchi Parser");
 
 	@Test
 	public void parse() throws IOException{
