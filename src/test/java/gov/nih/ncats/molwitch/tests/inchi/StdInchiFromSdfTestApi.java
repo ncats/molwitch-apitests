@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
+import gov.nih.ncats.molwitch.tests.contract.ApiContract;
 import gov.nih.ncats.molwitch.tests.contract.ApiContractChecker;
 import gov.nih.ncats.molwitch.tests.contract.PercentageApiContractChecker;
 import org.junit.ClassRule;
@@ -47,6 +48,7 @@ public class StdInchiFromSdfTestApi {
 	private InChiResult result;
 	private String expectedKey;
 	private String expectedInchi;
+	private String mol;
 	private String id;
 
 	@ClassRule
@@ -73,7 +75,7 @@ public class StdInchiFromSdfTestApi {
 				Chemical chem = reader.read();
 //				String smiles = chem.getProperty("PUBCHEM_OPENEYE_ISO_SMILES", true);
 				String chembl_id = chem.getProperty("chembl_id").trim();
-				
+
 				String inchi = chem.getProperty("Inchi", true);
 				String key = chem.getProperty("InChIKey", true);
 				list.add( new Object[]{removeInChiPrefix(inchi), key, chem, chembl_id});
@@ -83,21 +85,39 @@ public class StdInchiFromSdfTestApi {
 	}
 	private static String removeInChiPrefix(String inchi){
 		//substring 6 because all start "InChi="
-		return inchi.substring(6);
+		if(inchi.startsWith("InChi=")) {
+			return inchi.substring(6);
+		}
+		return inchi;
 	}
 	public StdInchiFromSdfTestApi(String expectedInchi, String key, Chemical chem, String id) throws IOException {
 		this.expectedInchi = expectedInchi;
 		this.expectedKey = key;
 
 		this.result = Inchi.asStdInchi(chem, true);
-
+		this.mol = chem.toMol();
 		if(this.result.getInchi() ==null){
 			throw new IllegalStateException(result.toString());
 		}
 		this.id = id;
 	}
 
+	//katzelda  2021: inchi-> chemical tests mostly fail with bad stereo layers not sure why
 
+//	@Test
+//	@ApiContract(category = "compute inchiKey")
+//	public void inchiToChemToInchiKey() throws IOException {
+//		Chemical c = Inchi.toChemical(expectedInchi);
+//		String actualKey =c.toInchi().getKey();
+//		assertEquals(expectedKey, actualKey);
+//	}
+//	@Test
+//	@ApiContract(category = "compute inchi")
+//	public void inchiToChemToInchi() throws IOException {
+//		Chemical c = Inchi.toChemical(expectedInchi);
+//		String actual =removeInChiPrefix(c.toInchi().getInchi());
+//		assertEquals(expectedInchi, actual);
+//	}
 
 	@Test
 	public void mol2Inchi(){
