@@ -104,20 +104,23 @@ public class StdInchiFromSdfTestApi {
 
 	//katzelda  2021: inchi-> chemical tests mostly fail with bad stereo layers not sure why
 
-//	@Test
-//	@ApiContract(category = "compute inchiKey")
-//	public void inchiToChemToInchiKey() throws IOException {
-//		Chemical c = Inchi.toChemical(expectedInchi);
-//		String actualKey =c.toInchi().getKey();
-//		assertEquals(expectedKey, actualKey);
-//	}
-//	@Test
-//	@ApiContract(category = "compute inchi")
-//	public void inchiToChemToInchi() throws IOException {
-//		Chemical c = Inchi.toChemical(expectedInchi);
-//		String actual =removeInChiPrefix(c.toInchi().getInchi());
-//		assertEquals(expectedInchi, actual);
-//	}
+	@Test
+	@ApiContract(category = "compute inchiKey")
+	public void inchiToChemToInchiKey() throws IOException {
+		Chemical c = Inchi.toChemical(expectedInchi);
+//		if("CHEMBL503044".equals(id)){
+//			System.out.println(c.toMol());
+//		}
+		String actualKey =c.toInchi().getKey();
+		assertEquals(expectedKey, actualKey);
+	}
+	@Test
+	@ApiContract(category = "compute inchi")
+	public void inchiToChemToInchi() throws IOException {
+		Chemical c = Inchi.toChemical(expectedInchi);
+		String actual =removeInChiPrefix(c.toInchi().getInchi());
+		assertEquals(expectedInchi, actual);
+	}
 
 	@Test
 	public void mol2Inchi(){
