@@ -6,12 +6,12 @@
 
     <groupId>gov.nih.ncats</groupId>
     <artifactId>molwitch-apitests</artifactId>
-    <version>0.6.2-SNAPSHOT</version>
+    <version>0.6.2</version>
 
     <name>molwitch-apitests</name>
 
     <url>https://github.com/ncats/molwitch-apitests</url>
-    <description>Test package to make sure that Witch implementations meet interface specification
+    <description>Test package to make sure that the MolWitch implementations meet interface specification
     </description>
     <organization>
         <name>NIH/NCATS</name>
@@ -192,7 +192,7 @@
         <dependency>
             <groupId>gov.nih.ncats</groupId>
             <artifactId>molwitch</artifactId>
-            <version>0.6.1-SNAPSHOT</version>
+            <version>0.6.2</version>
         </dependency>
         <dependency>
             <groupId>gov.nih.ncats</groupId>
@@ -202,7 +202,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <version>4.13.2</version>
         </dependency>
         <dependency>
             <groupId>org.easymock</groupId>
