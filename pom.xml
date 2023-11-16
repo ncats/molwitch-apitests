@@ -76,7 +76,7 @@
                             <goal>test-jar</goal>
                         </goals>
                     </execution>
-                    <execution>  <!-- Maybe this is not needed, please test on next release-->
+                    <execution>
                         <id>default-jar</id>
                         <phase>package</phase>
                         <goals>
